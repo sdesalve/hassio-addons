@@ -1,0 +1,39 @@
+{
+  "name": "DSS VoIP Notifier",
+  "version": "1.0.0",
+  "slug": "dss_voip",
+  "url": "https://github.com/sdesalve/hassio-addons/tree/master/dss_voip",
+  "description": "VoIP Notifier for HomeAssistant",
+  "arch": [
+    "armhf",
+    "armv7",
+    "aarch64",
+    "amd64",
+    "i386"
+  ],
+  "startup": "before",
+  "stdin": true,
+  "hassio_api": true,
+  "hassio_role": "default",
+  "boot": "auto",
+  "map": ["share:rw"],
+  "homeassistant_api": true,
+  "options": {
+    "sip_parameters": {
+      "sip_server_uri": "sip:sipserver.com:5060",
+      "caller_id_uri": "sip:username@sipserver.com",
+      "realm": "*",
+      "username": "username",
+      "password": "password"
+    }
+  },
+  "schema": {
+    "sip_parameters": {
+      "sip_server_uri":  "str?",
+      "caller_id_uri":  "str",
+      "realm": "str?",
+      "username": "str?",
+      "password": "str?"
+    }
+  }
+}
