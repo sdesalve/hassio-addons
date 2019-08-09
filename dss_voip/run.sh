@@ -9,7 +9,7 @@ rm -f /share/dss_voip/dss_*
 echo ""                                                    >> /share/dss_voip/dss_voip.log
 
 CONFIG_PATH=/data/options.json
-bashio::log.info "[Info] Starting addon TEST..."
+bashio::log.green "[Info] Starting addon..."
 
 # Generate pjsua.conf
 SIP_PARAMETERS=$(bashio::config 'sip_parameters | length')
@@ -82,13 +82,13 @@ echo ""                                                    >> /share/dss_voip/ds
 chmod 660 /share/dss_voip/dss_*
 
 if [ "$MAKECALL" -eq "1" ]; then
-   bashio::log.info "[Info] Listening for message_ttss via stdin service call..."
+   bashio::log.green "[Info] Listening for messages via stdin service call..."
    # listen for input
    while read -r msg; do
       MAKECALL="1"
       # parse JSON
-      bashio::log.info "[Info] Received message_tts ${msg}"
-      echo "[Info] Received message_tts '${msg}'"          >> /share/dss_voip/dss_voip.log
+      bashio::log.green "[Info] Received messages ${msg}"
+      echo "[Info] Received messages '${msg}'"          >> /share/dss_voip/dss_voip.log
       
       CALL_SIP_URI="$(echo "$msg" | jq --raw-output '.call_sip_uri | length')"
       if [ "$CALL_SIP_URI" -gt "0" ]; then
@@ -110,7 +110,7 @@ if [ "$MAKECALL" -eq "1" ]; then
       MESSAGE_TTS="$(echo "$msg" | jq --raw-output '.message_tts | length')"
       if [ "$MESSAGE_TTS" -gt "0" ]; then
          MESSAGE_TTS_VALUE="$(echo "$msg" | jq --raw-output '.message_tts')"
-         bashio::log.info 'MESSAGE_TTS_VALUE = '$MESSAGE_TTS_VALUE 
+         bashio::log.green 'MESSAGE_TTS_VALUE = '$MESSAGE_TTS_VALUE 
          echo "MESSAGE_TTS_VALUE = '$MESSAGE_TTS_VALUE'"   >> /share/dss_voip/dss_voip.log
       else
          MAKECALL="0"
@@ -134,9 +134,9 @@ if [ "$MAKECALL" -eq "1" ]; then
          # bashio::log.info 'DATA_JSON = '$DATA_JSON 
          echo "DATA_JSON = '$DATA_JSON'"                   >> /share/dss_voip/dss_voip.log
 
-         # bashio::log.info 'HASSIO_TOKEN = '$HASSIO_TOKEN 
+         # bashio::log.green 'HASSIO_TOKEN = '$HASSIO_TOKEN 
          JSONGOOGLETTS=$( curl --silent -X POST -H "x-ha-access: ${HASSIO_TOKEN}" -H "Content-Type: application/json" -d "${DATA_JSON}" http://hassio/homeassistant/api/tts_get_url)
-         bashio::log.info 'JSONGOOGLETTS = '$JSONGOOGLETTS 
+         bashio::log.green 'JSONGOOGLETTS = '$JSONGOOGLETTS 
          echo "JSONGOOGLETTS = '$JSONGOOGLETTS'"           >> /share/dss_voip/dss_voip.log
 
          URLFILEMP3=$(echo "$JSONGOOGLETTS" | jq --raw-output ".url | length" )
@@ -146,9 +146,9 @@ if [ "$MAKECALL" -eq "1" ]; then
             URLFILEMP3_VALUE=$(echo "$JSONGOOGLETTS" | jq --raw-output ".url" )
             echo "URLFILEMP3_VALUE = '$URLFILEMP3_VALUE'"  >> /share/dss_voip/dss_voip.log
             # bashio::log.info 'URLFILEMP3_VALUE = '$URLFILEMP3_VALUE 
-            bashio::log.info "Converting audio file..."
+            bashio::log.green "Converting audio file..."
             ( sox -q -V0 $URLFILEMP3_VALUE /share/dss_voip/dss_message_tts.wav pad 0.5 1.5 ) >&2 > /share/dss_voip/dss_sox.log
-            bashio::log.info "Starting SIP Client..."
+            bashio::log.green "Starting SIP Client..."
             ( sleep 20; echo q ) | ( pjsua --app-log-level=0 --log-level=0 --log-file='/share/dss_voip/dss_pjsua.log' --config-file '/share/dss_voip/dss_pjsua.conf' $CALL_SIP_URI_VALUE ) 
          else
             bashio::log.red \
