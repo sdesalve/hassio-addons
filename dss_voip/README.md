@@ -25,7 +25,7 @@ The google_translate text-to-speech platform uses unofficial Google Translate Te
 The installation of this add-on is pretty straightforward and not different in
 comparison to installing any other Hass.io add-on.
 
-1. Add my Hass.io add-ons repository **[https://github.com/sdesalve/hassio-addons]**[repository] to your Hass.io instance.
+1. Add my Hass.io add-ons repository (**https://github.com/sdesalve/hassio-addons**) to your Hass.io instance.
 1. Install the "DSS VoIP Notifier" add-on.
 1. Configure the `sip_server_uri`, `caller_id_uri`, `username`, and `password` options.
 1. Start the "DSS VoIP Notifier" add-on.
@@ -73,7 +73,6 @@ Pbxes.com phonebox
 ```json
 {
   "sipparameters": {
-    "sip_server_uri": "",
     "caller_id_uri": "sip:extension@pbxes.com",
     "realm": "*",
     "username": "extension",
@@ -87,7 +86,6 @@ Vohippo.com VoIP provider
 ```json
 {
   "sipparameters": {
-    "sip_server_uri": "",
     "caller_id_uri": "sip:username@sip.vohippo.com",
     "realm": "*",
     "username": "username",
@@ -101,7 +99,6 @@ Eutelia.it/CloudItaliaOrchestra.it  VoIP provider
 ```json
 {
   "sipparameters": {
-    "sip_server_uri": "",
     "caller_id_uri": "sip:phonenumber@voip.eutelia.it",
     "realm": "*",
     "username": "phonenumber",
