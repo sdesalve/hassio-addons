@@ -25,7 +25,7 @@ The google_translate text-to-speech platform uses unofficial Google Translate Te
 The installation of this add-on is pretty straightforward and not different in
 comparison to installing any other Hass.io add-on.
 
-1. [Add our Hass.io add-ons repository][repository] to your Hass.io instance.
+1. Add my Hass.io add-ons repository **[https://github.com/sdesalve/hassio-addons]**[repository] to your Hass.io instance.
 1. Install the "DSS VoIP Notifier" add-on.
 1. Configure the `sip_server_uri`, `caller_id_uri`, `username`, and `password` options.
 1. Start the "DSS VoIP Notifier" add-on.
@@ -41,7 +41,6 @@ DSS VoIP Notifier add-on configuration:
 ```json
 {
   "sip_parameters": {
-    "sip_server_uri": "sip:sipserver.com:5060",
     "caller_id_uri": "sip:username@sipserver.com",
     "realm": "*",
     "username": "username",
@@ -52,19 +51,15 @@ DSS VoIP Notifier add-on configuration:
 
 **Note**: _This is just an example, don't copy and paste it! Create your own!_
 
-#### Option `sip_parameters`: `sip_server_uri` (Optional)
-
-Set the URL of the sip_server_uri server. It not specified, then the account will not register. An example of URL: "sip:sipserver.com:5060"
-
 #### Option `sip_parameters`: `callerd_id` (Required)
 
 Set SIP URL of the account(i.e. From header). For example: "sip:username@sipserver.com"
 
-#### Option `sip_parameters`: `username` (Optional)
+#### Option `sip_parameters`: `username` (Requested if required by server in **call_sip_uri**. See below.)
 
 Set authentication user ID.
 
-#### Option `sip_parameters`: `password` (Optional)
+#### Option `sip_parameters`: `password` (Requested if required by server in **call_sip_uri**. See below.)
 
 Set authentication password (clear text).
 
