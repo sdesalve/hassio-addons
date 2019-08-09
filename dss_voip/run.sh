@@ -1,14 +1,15 @@
 #!/usr/bin/env bashio
 set -e
-echo ""                                                    >> /share/dss_voip/dss_voip.log
 
 MAKECALL="1"
 mkdir -p /share/dss_voip
 chmod 770 /share/dss_voip
 rm -f /share/dss_voip/dss_*
 
+echo ""                                                    >> /share/dss_voip/dss_voip.log
+
 CONFIG_PATH=/data/options.json
-bashio::log.info "[Info] Starting addon..."
+bashio::log.info "[Info] Starting addon TEST..."
 
 # Generate pjsua.conf
 SIP_PARAMETERS=$(bashio::config 'sip_parameters | length')
@@ -29,16 +30,16 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
    if [ "$SIP_SERVER_URI" -gt "0" ]; then 
       SIP_SERVER_URI_VALUE=$(bashio::config 'sip_parameters.sip_server_uri')
       echo "--registrar $SIP_SERVER_URI_VALUE"        >> /share/dss_voip/dss_pjsua.conf
-   else
-      MAKECALL="0"
-      bashio::log.red \
-        '-----------------------------------------------------------'
-      bashio::log.red '                Oops! Something went wrong.'
-      bashio::log.red
-      bashio::log.red ' sip_server_uri not specified.'
-      bashio::log.red \
-        '-----------------------------------------------------------'
-      echo "sip_server_uri not specified"                  >> /share/dss_voip/dss_voip.log
+   # else
+      # MAKECALL="0"
+      # bashio::log.red \
+        # '-----------------------------------------------------------'
+      # bashio::log.red '                Oops! Something went wrong.'
+      # bashio::log.red
+      # bashio::log.red ' sip_server_uri not specified.'
+      # bashio::log.red \
+        # '-----------------------------------------------------------'
+      # echo "sip_server_uri not specified"                  >> /share/dss_voip/dss_voip.log
    fi
    if [ "$CALLER_ID_URI" -gt "0" ]; then 
       CALLER_ID_URI_VALUE=$(bashio::config 'sip_parameters.caller_id_uri')

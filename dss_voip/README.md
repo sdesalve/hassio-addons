@@ -144,7 +144,7 @@ Got questions?
 
 You have several options to get them answered:
 
-- The [HassioHelp - Domotica Shelly Sonoff Xiaomi @hassiohelp][hassiohelp] an italian's telegram Home Assistant Italian Group for add-on
+- The [HassioHelp - Domotica Shelly Sonoff Xiaomi @hassiohelp][hassiohelp] a telegram Home Assistant Italian Group for add-on
   support and general Home Assistant discussions and questions.
 - [Open an issue here][issue] GitHub.
 
