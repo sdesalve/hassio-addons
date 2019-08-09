@@ -54,7 +54,7 @@ DSS VoIP Notifier add-on configuration:
 
 #### Option `sip_parameters`: `sip_server_uri` (Optional)
 
-Set the URL of the registrar server. It not specified, then the account will not register. An example of URL: "sip:sipserver.com:5060"
+Set the URL of the sip_server_uri server. It not specified, then the account will not register. An example of URL: "sip:sipserver.com:5060"
 
 #### Option `sip_parameters`: `callerd_id` (Required)
 
@@ -78,8 +78,8 @@ Pbxes.com phonebox
 ```json
 {
   "sipparameters": {
-    "registrar": "sip:www3.pbxes.com:36999",
-    "callerid": "sip:extension@pbxes.com",
+    "sip_server_uri": "",
+    "caller_id_uri": "sip:extension@pbxes.com",
     "realm": "*",
     "username": "extension",
     "password": "password"
@@ -92,8 +92,8 @@ Vohippo.com VoIP provider
 ```json
 {
   "sipparameters": {
-    "registrar": "sip:sip.vohippo.com:5060",
-    "callerid": "sip:username@sip.vohippo.com",
+    "sip_server_uri": "",
+    "caller_id_uri": "sip:username@sip.vohippo.com",
     "realm": "*",
     "username": "username",
     "password": "password"
@@ -106,8 +106,8 @@ Eutelia.it/CloudItaliaOrchestra.it  VoIP provider
 ```json
 {
   "sipparameters": {
-    "registrar": "sip:voip.eutelia.it:5060",
-    "callerid": "sip:phonenumber@voip.eutelia.it",
+    "sip_server_uri": "",
+    "caller_id_uri": "sip:phonenumber@voip.eutelia.it",
     "realm": "*",
     "username": "phonenumber",
     "password": "password"
