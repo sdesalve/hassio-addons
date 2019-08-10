@@ -26,6 +26,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
    REALM=$(bashio::config 'sip_parameters.realm | length')
    USERNAME=$(bashio::config 'sip_parameters.username | length')
    PASSWORD=$(bashio::config 'sip_parameters.password | length')
+   CUSTOM_OPTIONS=$(bashio::config 'custom_options | length')
    
    if [ "$SIP_SERVER_URI" -gt "0" ]; then 
       SIP_SERVER_URI_VALUE=$(bashio::config 'sip_parameters.sip_server_uri')
@@ -59,6 +60,11 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
    if [ "$PASSWORD" -gt "0" ]; then 
       PASSWORD_VALUE=$(bashio::config 'sip_parameters.password')
       echo "--password $PASSWORD_VALUE"                    >> /share/dss_voip/dss_pjsua.conf
+   fi
+   if [ "$CUSTOM_OPTIONS" -gt "0" ]; then 
+      CUSTOM_OPTIONS_VALUE=$(bashio::config 'custom_options')
+      echo "$CUSTOM_OPTIONS_VALUE"                         >> /share/dss_voip/dss_pjsua.conf
+      bashio::log.yellow "CUSTOM_OPTIONS = '$CUSTOM_OPTIONS_VALUE'"
    fi
    
    echo ""                                                 >> /share/dss_voip/dss_pjsua.conf

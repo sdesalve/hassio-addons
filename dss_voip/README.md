@@ -67,6 +67,10 @@ Set authentication password (clear text).
 
 Set authentication realm. The realm is used to match this credential against challenges issued by downstream servers. If the realm is not known beforehand, wildcard character ('*') can be specified to make SIP Client respond to any realms.
 
+#### Option `custom_options` (Optional)
+
+Set optional custom command's line options. For reference see [PJSua man page][https://www.pjsip.org/pjsua.htm#cmdline].
+
 ## Example config for some VoIP providers
 
 Pbxes.com phonebox
