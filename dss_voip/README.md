@@ -55,11 +55,11 @@ DSS VoIP Notifier add-on configuration:
 
 Set SIP URL of the account(i.e. From header). For example: "sip:username@sipserver.com"
 
-#### Option `sip_parameters`: `username` (Requested if required by server in **call_sip_uri**. See below.)
+#### Option `sip_parameters`: `username` (If required by outgooing server in **call_sip_uri**. See below.)
 
 Set authentication user ID.
 
-#### Option `sip_parameters`: `password` (Requested if required by server in **call_sip_uri**. See below.)
+#### Option `sip_parameters`: `password` (If required by outgooing server in **call_sip_uri**. See below.)
 
 Set authentication password (clear text).
 
@@ -123,7 +123,8 @@ You will need to call this addon from your Hassio `automation`/`script` usign fo
 
 #### Option `call_sip_uri` (Required)
 
-Set SIP URL to call. For example: "sip:username@sipserver.com" or "sip:+393334455667@sipserver.com" 
+Set SIP URL to call. For example: "sip:username@sipserver.com" or "sip:+393334455667@sipserver.com"
+Outgooing SIP server can require authentication. Please set an `username` and `password` under `sip_parameters` section in addon config.
 
 #### Option `message_tts` (Required)
 
@@ -140,7 +141,8 @@ You have several options to get them answered:
   support and general Home Assistant discussions and questions.
 - [Open an issue here][issue] GitHub.
 
-![pixel][gatracking]
+![GATracking][gatracking]
+![Clicky][clicky]
 
 ## Contributing
 
@@ -192,3 +194,4 @@ SOFTWARE.
 [hassiohelp]: https://t.me/HassioHelp
 [googletts]: https://www.home-assistant.io/components/google_translate
 [gatracking]: https://ssl.google-analytics.com/collect?v=1&t=event&ec=github&ea=view&t=event&tid=UA-145414045-1&z=1565415715&cid=5940b69c-91c9-9ba5-290b-beb31c9d76fb&dt=DSS%20VoIP%20Notifier%20-%20README&dp=/DSS%20VoIP%20Notifier%20-%20README
+[clicky]: https://in.getclicky.com/101201638ns.gif
