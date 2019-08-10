@@ -98,7 +98,7 @@ LABEL \
     org.label-schema.description="SDeSalve VoIP addon: ${BUILD_ARCH} image" \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="Addon VoIP for ${BUILD_ARCH}" \
-    org.label-schema.schema-version="1.0.2" \
+    org.label-schema.schema-version="1.0.3" \
     org.label-schema.url="https://addons.community" \
     org.label-schema.usage="https://github.com/sdesalve/hassio-addons/dss_voip/README.md" \
     org.label-schema.vcs-ref=${REF} \
