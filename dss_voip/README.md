@@ -140,6 +140,8 @@ You have several options to get them answered:
   support and general Home Assistant discussions and questions.
 - [Open an issue here][issue] GitHub.
 
+![pixel][gatracking]
+
 ## Contributing
 
 This is an active open-source project. We are always open to people who want to
@@ -189,3 +191,4 @@ SOFTWARE.
 [repository]: https://github.com/sdesalve/hassio-addons
 [hassiohelp]: https://t.me/HassioHelp
 [googletts]: https://www.home-assistant.io/components/google_translate
+[gatracking]: https://ssl.google-analytics.com/collect?v=1&t=event&ec=github&ea=view&t=event&tid=UA-145414045-1&z=1565415715&cid=5940b69c-91c9-9ba5-290b-beb31c9d76fb&dt=DSS%20VoIP%20Notifier%20-%20README&dp=/DSS%20VoIP%20Notifier%20-%20README
