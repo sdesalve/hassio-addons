@@ -67,9 +67,13 @@ Set authentication password (clear text).
 
 Set authentication realm. The realm is used to match this credential against challenges issued by downstream servers. If the realm is not known beforehand, wildcard character ('*') can be specified to make SIP Client respond to any realms.
 
-#### Option `custom_options` (Optional)
+#### Option `pjsua_custom_options` (Optional)
 
 Set optional custom command's line options. For reference see [PJSua man page][pjsuaman].
+
+#### Option `sox_custom_options` (Optional)
+
+Set optional custom command's line options. For reference see [SoX man page][soxman].
 
 ## Example config for some VoIP providers
 
@@ -183,3 +187,4 @@ See [LICENSE][license]
 [clicky]: https://in.getclicky.com/101201638ns.gif
 [license]: https://github.com/sdesalve/hassio-addons/blob/master/dss_voip/LICENSE.md
 [pjsuaman]: https://www.pjsip.org/pjsua.htm#cmdline
+[soxman]: http://sox.sourceforge.net/sox.html

@@ -26,7 +26,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
    REALM=$(bashio::config 'sip_parameters.realm | length')
    USERNAME=$(bashio::config 'sip_parameters.username | length')
    PASSWORD=$(bashio::config 'sip_parameters.password | length')
-   CUSTOM_OPTIONS=$(bashio::config 'custom_options | length')
+   PJSUA_CUSTOM_OPTIONS=$(bashio::config 'pjsua_custom_options | length')
    
    if [ "$SIP_SERVER_URI" -gt "0" ]; then 
       SIP_SERVER_URI_VALUE=$(bashio::config 'sip_parameters.sip_server_uri')
@@ -61,10 +61,18 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
       PASSWORD_VALUE=$(bashio::config 'sip_parameters.password')
       echo "--password $PASSWORD_VALUE"                    >> /share/dss_voip/dss_pjsua.conf
    fi
-   if [ "$CUSTOM_OPTIONS" -gt "0" ]; then 
-      CUSTOM_OPTIONS_VALUE=$(bashio::config 'custom_options')
-      echo "$CUSTOM_OPTIONS_VALUE"                         >> /share/dss_voip/dss_pjsua.conf
-      bashio::log.yellow "CUSTOM_OPTIONS = '$CUSTOM_OPTIONS_VALUE'"
+   if [ "$PJSUA_CUSTOM_OPTIONS" -gt "0" ]; then 
+      PJSUA_CUSTOM_OPTIONS_VALUE=$(bashio::config 'pjsua_custom_options')
+      echo "$PJSUA_CUSTOM_OPTIONS_VALUE"                   >> /share/dss_voip/dss_pjsua.conf
+      bashio::log.yellow "PJSUA_CUSTOM_OPTIONS = '$PJSUA_CUSTOM_OPTIONS_VALUE'"
+   fi
+   
+   if [ "$SOX_CUSTOM_OPTIONS" -gt "0" ]; then 
+      SOX_CUSTOM_OPTIONS_VALUE=$(bashio::config 'custom_options')
+      echo "SOX_CUSTOM_OPTIONS = '$SOX_CUSTOM_OPTIONS_VALUE'" >> /share/dss_voip/dss_voip.log
+      bashio::log.yellow "SOX_CUSTOM_OPTIONS = '$SOX_CUSTOM_OPTIONS_VALUE'"
+   else
+      SOX_CUSTOM_OPTIONS_VALUE=""
    fi
    
    echo ""                                                 >> /share/dss_voip/dss_pjsua.conf
@@ -153,7 +161,7 @@ if [ "$MAKECALL" -eq "1" ]; then
             echo "URLFILEMP3_VALUE = '$URLFILEMP3_VALUE'"  >> /share/dss_voip/dss_voip.log
             # bashio::log.info 'URLFILEMP3_VALUE = '$URLFILEMP3_VALUE 
             bashio::log.green "Converting audio file..."
-            ( sox -q -V0 $URLFILEMP3_VALUE /share/dss_voip/dss_message_tts.wav pad 0.5 1.5 ) >&2 > /share/dss_voip/dss_sox.log
+            ( sox -q -V0 $SOX_CUSTOM_OPTIONS_VALUE $URLFILEMP3_VALUE /share/dss_voip/dss_message_tts.wav pad 0.5 1.5 ) >&2 > /share/dss_voip/dss_sox.log
             bashio::log.green "Starting SIP Client..."
             ( sleep 20; echo q ) | ( pjsua --app-log-level=0 --log-level=0 --log-file='/share/dss_voip/dss_pjsua.log' --config-file '/share/dss_voip/dss_pjsua.conf' $CALL_SIP_URI_VALUE ) 
          else

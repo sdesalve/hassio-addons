@@ -1,6 +1,6 @@
 {
   "name": "DSS VoIP Notifier",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "slug": "dss_voip",
   "url": "https://github.com/sdesalve/hassio-addons/tree/master/dss_voip",
   "description": "VoIP Notifier for HomeAssistant",
@@ -26,7 +26,8 @@
       "username": "username",
       "password": "password"
     },
-    "custom_options": ""
+    "pjsua_custom_options": "",
+    "sox_custom_options": ""
   },
   "schema": {
     "sip_parameters": {
@@ -36,7 +37,7 @@
       "username": "str?",
       "password": "str?"
     },
-    "custom_options": "str?"
-
+    "pjsua_custom_options": "str?",
+    "sox_custom_options": "str?"
   }
 }
