@@ -27,6 +27,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
    USERNAME=$(bashio::config 'sip_parameters.username | length')
    PASSWORD=$(bashio::config 'sip_parameters.password | length')
    PJSUA_CUSTOM_OPTIONS=$(bashio::config 'pjsua_custom_options | length')
+   SOX_CUSTOM_OPTIONS=$(bashio::config 'sox_custom_options | length')
    
    if [ "$SIP_SERVER_URI" -gt "0" ]; then 
       SIP_SERVER_URI_VALUE=$(bashio::config 'sip_parameters.sip_server_uri')
