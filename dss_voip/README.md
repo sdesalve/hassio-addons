@@ -6,9 +6,7 @@
 ![Supports armv7 Architecture][armv7-shield]
 ![Supports i386 Architecture][i386-shield]
 
-[![Buy me a coffee][buymeacoffee-shield]][buymeacoffee]
-
-[![Support my work on Paypal][paypal-shield]][paypal]
+[![Buy me a coffee][buymeacoffee-shield]][buymeacoffee] [![Support my work on Paypal][paypal-shield]][paypal]
 
 This add-on allows you to make VoIP calls from Hassio.
 
@@ -150,7 +148,6 @@ You have several options to get them answered:
 - [Open an issue here][issue] GitHub.
 
 ![GATracking][gatracking]
-![Clicky][clicky]
 
 ## Contributing
 
@@ -184,7 +181,6 @@ See [LICENSE][license]
 [hassiohelp]: https://t.me/HassioHelp
 [googletts]: https://www.home-assistant.io/components/google_translate
 [gatracking]: https://ssl.google-analytics.com/collect?v=1&t=event&ec=github&ea=view&t=event&tid=UA-145414045-1&z=1565415715&cid=5940b69c-91c9-9ba5-290b-beb31c9d76fb&dt=DSS%20VoIP%20Notifier%20-%20README&dp=/DSS%20VoIP%20Notifier%20-%20README
-[clicky]: https://in.getclicky.com/101201638ns.gif
 [license]: https://github.com/sdesalve/hassio-addons/blob/master/dss_voip/LICENSE.md
 [pjsuaman]: https://www.pjsip.org/pjsua.htm#cmdline
 [soxman]: http://sox.sourceforge.net/sox.html
