@@ -28,7 +28,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
    USERNAME=$(bashio::config 'sip_parameters.username | length')
    PASSWORD=$(bashio::config 'sip_parameters.password | length')
    PJSUA_CUSTOM_OPTIONS=$(bashio::config 'pjsua_custom_options | length')
-   SOX_CUSTOM_OPTIONS=$(bashio::config 'sox_custom_options | length') 
+   SOX_CUSTOM_OPTIONS=$(bashio::config 'sox_custom_options | length')
    
    if [ "$CALLER_ID_URI" -gt "0" ]; then 
       CALLER_ID_URI_VALUE=$(bashio::config 'sip_parameters.caller_id_uri')
@@ -49,6 +49,13 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
       PASSWORD_VALUE=$(bashio::config 'sip_parameters.password')
       echo "--password $PASSWORD_VALUE"                    >> /share/dss_voip/dss_pjsua.conf
    fi
+   
+   if [ "$CALLER_ID_URI_VALUE" = "sip:username@sipserver.com" ] && [ "$USERNAME_VALUE" = "username" ] && [ "$PASSWORD_VALUE" = "password" ]; then 
+      bashio::log.red '[Error] Invalid config. Customize it!'
+      echo "invalid config. Create your own!"              >> /share/dss_voip/dss_voip.log
+      exit 1
+   fi
+   
    if [ "$SIP_SERVER_URI" -gt "0" ]; then 
       SIP_SERVER_URI_VALUE=$(bashio::config 'sip_parameters.sip_server_uri')
       # echo "--registrar $SIP_SERVER_URI_VALUE"             >> /share/dss_voip/dss_pjsua.conf

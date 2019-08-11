@@ -83,7 +83,7 @@ Set optional custom command's line options. For reference see [SoX man page][sox
 Pbxes.com phonebox
 ```json
 {
-  "sipparameters": {
+  "sip_parameters": {
     "caller_id_uri": "sip:extension@pbxes.com",
     "realm": "*",
     "username": "extension",
@@ -96,7 +96,7 @@ Pbxes.com phonebox
 Vohippo.com VoIP provider
 ```json
 {
-  "sipparameters": {
+  "sip_parameters": {
     "caller_id_uri": "sip:username@sip.vohippo.com",
     "realm": "*",
     "username": "username",
@@ -109,7 +109,7 @@ Vohippo.com VoIP provider
 Eutelia.it/CloudItaliaOrchestra.it  VoIP provider
 ```json
 {
-  "sipparameters": {
+  "sip_parameters": {
     "caller_id_uri": "sip:phonenumber@voip.eutelia.it",
     "realm": "*",
     "username": "phonenumber",
