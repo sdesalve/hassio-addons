@@ -1,10 +1,6 @@
 # SDeSalve Hass.io Add-ons: DSS VoIP Notifier
 
-![Supports aarch64 Architecture][aarch64-shield]
-![Supports amd64 Architecture][amd64-shield]
-![Supports armhf Architecture][armhf-shield]
-![Supports armv7 Architecture][armv7-shield]
-![Supports i386 Architecture][i386-shield]
+![Supports aarch64 Architecture][aarch64-shield] ![Supports amd64 Architecture][amd64-shield] ![Supports armhf Architecture][armhf-shield] ![Supports armv7 Architecture][armv7-shield] ![Supports i386 Architecture][i386-shield]
 
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee] [![Support my work on Paypal][paypal-shield]][paypal]
 
@@ -47,6 +43,8 @@ DSS VoIP Notifier add-on configuration:
 }
 ```
 
+### Basic options
+
 **Note**: _This is just an example, don't copy and paste it! Create your own!_
 
 #### Option `sip_parameters`: `callerd_id` (Required)
@@ -64,6 +62,13 @@ Set authentication password (clear text).
 #### Option `sip_parameters`: `realm` (Optional)
 
 Set authentication realm. The realm is used to match this credential against challenges issued by downstream servers. If the realm is not known beforehand, wildcard character ('*') can be specified to make SIP Client respond to any realms.
+
+### Advanced options
+Following options are not required for a standard setup. Use them if you know what are you doing.
+
+#### Option `sip_parameters`: `sip_server_uri` (Optional)
+
+Set the URL of the registrar server. If set, addon will auto-answer to call and play a dummy audio so you can check system's status. An example of URL: "sip:example.com"
 
 #### Option `pjsua_custom_options` (Optional)
 
@@ -126,6 +131,18 @@ You will need to call this addon from your Hassio `automation`/`script` usign fo
         input: {"call_sip_uri":"sip:call_sip_uri@sipserver.com","message_tts":"Write here your message"}
    ...
 ```
+**Note**: If you have to use special character in your JSON string, you can escape it using \ character.
+
+See this list of special character used in JSON :
+```
+\b  Backspace (ascii code 08)
+\f  Form feed (ascii code 0C)
+\n  New line
+\r  Carriage return
+\t  Tab
+\"  Double quote
+\\  Backslash character
+```
 
 #### Option `call_sip_uri` (Required)
 
@@ -151,7 +168,7 @@ You have several options to get them answered:
 
 ## Contributing
 
-This is an active open-source project. We are always open to people who want to
+This is an active project. I'm always open to people who want to
 use the code or contribute to it.
 
 Thank you for being involved! :heart_eyes:

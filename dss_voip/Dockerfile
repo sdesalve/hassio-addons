@@ -47,6 +47,7 @@ RUN \
     && apk add --no-cache \
         sox=14.4.2-r5 \
         pjsua=2.8-r0 \
+        screen=4.6.2-r0 \
     \
     && S6_ARCH="${BUILD_ARCH}" \
     && if [ "${BUILD_ARCH}" = "i386" ]; then S6_ARCH="x86"; fi \
@@ -75,9 +76,6 @@ RUN \
 # Entrypoint & CMD
 ENTRYPOINT ["/init"]
 
-#RUN mkdir -p /share/dss_voip
-#RUN chmod 770 /share/dss_voip
-
 # Copy data for add-on
 COPY run.sh /
 RUN chmod a+x /run.sh
@@ -98,7 +96,7 @@ LABEL \
     org.label-schema.description="SDeSalve VoIP addon: ${BUILD_ARCH} image" \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="Addon VoIP for ${BUILD_ARCH}" \
-    org.label-schema.schema-version="1.0.4" \
+    org.label-schema.schema-version="1.0.8" \
     org.label-schema.url="https://addons.community" \
     org.label-schema.usage="https://github.com/sdesalve/hassio-addons/dss_voip/README.md" \
     org.label-schema.vcs-ref=${REF} \
