@@ -2,8 +2,8 @@
 set -e
 
 mkdir -p /share/dss_voip
-chmod 770 /share/dss_voip
 rm -f /share/dss_voip/dss_*
+chmod -R 770 /share/dss_voip
 
 echo ""                                                     > /share/dss_voip/dss_voip.log
 echo ""                                                     > /share/dss_voip/dss_pjsua.conf
@@ -52,7 +52,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
    
    if [ "$CALLER_ID_URI_VALUE" = "sip:username@sipserver.com" ] && [ "$USERNAME_VALUE" = "username" ] && [ "$PASSWORD_VALUE" = "password" ]; then 
       bashio::log.red '[Error] Invalid config. Customize it!'
-      echo "invalid config. Create your own!"              >> /share/dss_voip/dss_voip.log
+      echo "[Error] Invalid config. Customize it!"         >> /share/dss_voip/dss_voip.log
       exit 1
    fi
    
@@ -67,7 +67,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
       echo "--username $USERNAME_VALUE"                    >> /share/dss_voip/dss_pjsua_autoanswer.conf
       echo "--password $PASSWORD_VALUE"                    >> /share/dss_voip/dss_pjsua_autoanswer.conf
 
-      echo "--local-port=0"                                >> /share/dss_voip/dss_pjsua_autoanswer.conf
+      echo "--local-port 0"                                >> /share/dss_voip/dss_pjsua_autoanswer.conf
       echo "--null-audio"                                  >> /share/dss_voip/dss_pjsua_autoanswer.conf
       echo "--auto-play"                                   >> /share/dss_voip/dss_pjsua_autoanswer.conf
       echo "--play-file /etc/dss_pjsua_autoanswer.wav"     >> /share/dss_voip/dss_pjsua_autoanswer.conf
@@ -82,7 +82,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
            '-----------------------------------------------------------'
          bashio::log.magenta "                  SIP Client registered."
          bashio::log.magenta
-         bashio::log.magenta " Call <$CALLER_ID_URI_VALUE> to check system status."
+         bashio::log.magenta " Call <$CALLER_ID_URI_VALUE> or to check system status."
          bashio::log.magenta " You'll find logs in dss_pjsua_autoanswer.log..."
          bashio::log.magenta \
            '-----------------------------------------------------------'
@@ -244,3 +244,4 @@ while read -r msg; do
    
 done
 
+chmod -R 770 /share/dss_voip
