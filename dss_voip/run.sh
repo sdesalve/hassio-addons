@@ -82,7 +82,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
            '-----------------------------------------------------------'
          bashio::log.magenta "                  SIP Client registered."
          bashio::log.magenta
-         bashio::log.magenta " Call <$CALLER_ID_URI_VALUE> or to check system status."
+         bashio::log.magenta " Call <$CALLER_ID_URI_VALUE>/VoIP phone number to check system status."
          bashio::log.magenta " You'll find logs in dss_pjsua_autoanswer.log..."
          bashio::log.magenta \
            '-----------------------------------------------------------'
