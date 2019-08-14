@@ -4,7 +4,7 @@
 
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee] [![Support my work on Paypal][paypal-shield]][paypal]
 
-This add-on allows you to make VoIP calls from Hassio.
+This add-on allows you to make VoIP calls from Hass.io.
 
 ## Features
 
@@ -42,14 +42,13 @@ DSS VoIP Notifier add-on configuration:
   }
 }
 ```
+**Note**: _This is just an example, don't copy and paste it! Create your own!_
 
 ### Basic options
 
-**Note**: _This is just an example, don't copy and paste it! Create your own!_
-
 #### Option `sip_parameters`: `callerd_id` (Required)
 
-Set SIP URL of the account(i.e. From header). For example: "sip:username@sipserver.com"
+Set SIP URL of the caller account (i.e. From header). For example: "sip:username@sipserver.com"
 
 #### Option `sip_parameters`: `username` (If required by outgooing server in **call_sip_uri**. See below.)
 
@@ -68,7 +67,7 @@ Following options are not required for a standard setup. Use them if you know wh
 
 #### Option `sip_parameters`: `sip_server_uri` (Optional)
 
-Set the URL of the registrar server. If set, addon will auto-answer to call and play a dummy audio so you can check system's status. An example of URL: "sip:example.com"
+Set the URL of the registrar server. If set, addon will auto-answer to call and play a dummy audio so you can check system's status. An example of URL: "sip:sipserver.com"
 
 #### Option `pjsua_custom_options` (Optional)
 
@@ -80,7 +79,7 @@ Set optional custom command's line options. For reference see [SoX man page][sox
 
 ## Example config for some VoIP providers
 
-Pbxes.com phonebox
+### [Pbxes.com phonebox][pbxesurl]
 ```json
 {
   "sip_parameters": {
@@ -91,9 +90,9 @@ Pbxes.com phonebox
   }
 }
 ```
-**Note**: _call_sip_uri_ in Hassio service call must end with **@pbxes.com**. An example of URL: "sip:+393334455667@pbxes.com"
+**Note**: _call_sip_uri_ in Hass.io service call must end with **@pbxes.com**. An example of URL: "sip:+393334455667@pbxes.com"
 
-Vohippo.com VoIP provider
+### [Vohippo.com VoIP provider][vohippourl]
 ```json
 {
   "sip_parameters": {
@@ -104,9 +103,9 @@ Vohippo.com VoIP provider
   }
 }
 ```
-**Note**: _call_sip_uri_ in Hassio service call must end with **@vohippo.com**. An example of URL: "sip:+393334455667@vohippo.com"
+**Note**: _call_sip_uri_ in Hass.io service call must end with **@vohippo.com**. An example of URL: "sip:+393334455667@vohippo.com"
 
-CloudItaliaOrchestra.it VoIP provider
+### [CloudItaliaOrchestra.it VoIP provider][clouditaliaurl]
 ```json
 {
   "sip_parameters": {
@@ -117,11 +116,11 @@ CloudItaliaOrchestra.it VoIP provider
   }
 }
 ```
-**Note**: _call_sip_uri_ in Hassio service call must end with **@voip.eutelia.it**. An example of URL: "sip:+393334455667@voip.eutelia.it"
+**Note**: _call_sip_uri_ in Hass.io service call must end with **@voip.eutelia.it**. An example of URL: "sip:+393334455667@voip.eutelia.it"
 
 ## How to use
 
-You will need to call this addon from your Hassio `automation`/`script` usign following yaml service invoke:
+You will need to call this addon from your Hass.io `automation`/`script` usign following yaml service invoke:
 
 ```yaml
    ...
@@ -201,3 +200,6 @@ See [LICENSE][license]
 [license]: https://github.com/sdesalve/hassio-addons/blob/master/dss_voip/LICENSE.md
 [pjsuaman]: https://www.pjsip.org/pjsua.htm#cmdline
 [soxman]: http://sox.sourceforge.net/sox.html
+[pbxesurl]: https://www.pbxes.com
+[vohippourl]:  https://www.vohippo.com/index.php?rid=102324
+[clouditaliaurl]: https://orchestra.clouditalia.com
