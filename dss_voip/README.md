@@ -8,7 +8,7 @@ This add-on allows you to make VoIP calls from Hassio.
 
 ## Features
 
-This add-on, of course, provides a way to transform a text in a audio file, make a VoIP call to a SIP url and play them to the attendee.
+This add-on provides a way to transform a text in a audio file, make a VoIP call to a SIP url and play them to the attendee.
 You will need a valid VoIP account and their parameters to customize this addon config.
 
 Obviously you need to setup [Google Translate Text-to-Speech][googletts].
@@ -21,7 +21,7 @@ comparison to installing any other Hass.io add-on.
 
 1. Add my Hass.io add-ons repository (**https://github.com/sdesalve/hassio-addons**) to your Hass.io instance.
 1. Install the "DSS VoIP Notifier" add-on.
-1. Configure the `sip_server_uri`, `caller_id_uri`, `username`, and `password` options.
+1. Configure at least the `caller_id_uri`, `username`, and `password` options.
 1. Start the "DSS VoIP Notifier" add-on.
 1. Check the logs of the "DSS VoIP Notifier" add-on to see if everything
     went well. Addons will wait to be invoked from an `automation`/`script`.
@@ -106,7 +106,7 @@ Vohippo.com VoIP provider
 ```
 **Note**: _call_sip_uri_ in Hassio service call must end with **@vohippo.com**. An example of URL: "sip:+393334455667@vohippo.com"
 
-Eutelia.it/CloudItaliaOrchestra.it  VoIP provider
+CloudItaliaOrchestra.it VoIP provider
 ```json
 {
   "sip_parameters": {

@@ -134,6 +134,7 @@ chmod 660 /share/dss_voip/dss_*
 bashio::log.green "[Info] Listening for messages via stdin service call..."
 # listen for input
 while read -r msg; do
+
    rm -f /share/dss_voip/dss_message_tts.*
    MAKECALL="1"
    # parse JSON
@@ -200,6 +201,20 @@ while read -r msg; do
          if [ $? -eq 0 ]; then
             bashio::log.green "Audio succesfully converted..."
             bashio::log.green "Starting SIP Client and calling '$CALL_SIP_URI_VALUE'..."
+
+            n=0
+            while [ "$n" -lt 6 ] && [ -f '/share/dss_voip/current_call_data.log' ]; do
+              n=$(( n + 1 ))
+              sleep 5
+              bashio::log.yellow 'Another call is in progress... Please wait'
+            done
+            
+            if [ -f '/share/dss_voip/current_call_data.log' ]; then
+               rm -f '/share/dss_voip/current_call_data.log'
+               bashio::log.red "Forcing this call... Other call's timeout has expired!"
+            fi
+            echo "Calling '$CALL_SIP_URI_VALUE'..."        > /share/dss_voip/current_call_data.log
+
             ( sleep 20; echo q ) | ( pjsua --app-log-level=3 --config-file '/share/dss_voip/dss_pjsua.conf' $CALL_SIP_URI_VALUE 2> /share/dss_voip/dss_pjsua.log) 
             if [ $? -eq 0 ]; then
                bashio::log.green "Call ended..."
@@ -211,7 +226,8 @@ while read -r msg; do
                bashio::log.red ' Cannot place this call'
                bashio::log.red \
                  '-----------------------------------------------------------'
-            fi            
+            fi
+            rm -f '/share/dss_voip/current_call_data.log'
          else
             bashio::log.red \
               '-----------------------------------------------------------'
