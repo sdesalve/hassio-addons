@@ -118,6 +118,20 @@ Set optional custom command's line options. For reference see [SoX man page][sox
 ```
 **Note**: _call_sip_uri_ in Hass.io service call must end with **@voip.eutelia.it**. An example of URL: "sip:+393334455667@voip.eutelia.it"
 
+### [Messagenet VoIP provider][messageneturl]
+```json
+{
+  "sip_parameters": {
+    "caller_id_uri": "sip:phonenumber@sip.messagenet.it",
+    "realm": "*",
+    "username": "phonenumber",
+    "password": "password"
+  },
+  "pjsua_custom_options": "--outbound=sip:sip.messagenet.it:5061;lr" 
+}
+```
+**Note**: _call_sip_uri_ in Hass.io service call must end with **@sip.messagenet.it**. An example of URL: "sip:+393334455667@sip.messagenet.it"
+
 ## How to use
 
 You will need to call this addon from your Hass.io `automation`/`script` usign following yaml service invoke:
@@ -127,10 +141,11 @@ You will need to call this addon from your Hass.io `automation`/`script` usign f
     - service: hassio.addon_stdin
       data_template:
         addon: 89275b70_dss_voip
-        input: {"call_sip_uri":"sip:call_sip_uri@sipserver.com","message_tts":"Write here your message"}
+        input: {"call_sip_uri":"sip:+393334455667@sipserver.com","message_tts":"Write here your message"}
    ...
 ```
-**Note**: If you have to use special character in your JSON string, you can escape it using \ character.
+**Note**: Make sure _call_sip_uri_ was a SIP URI and ends with your SIP server. See samples above for some VoIP providers config.
+If you have to use special character in your JSON string, you can escape it using \ character.
 
 See this list of special character used in JSON :
 ```
@@ -203,3 +218,4 @@ See [LICENSE][license]
 [pbxesurl]: https://www.pbxes.com
 [vohippourl]:  https://www.vohippo.com/index.php?rid=102324
 [clouditaliaurl]: https://orchestra.clouditalia.com
+[messageneturl]: https://messagenet.com/it

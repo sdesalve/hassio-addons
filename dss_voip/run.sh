@@ -202,18 +202,18 @@ while read -r msg; do
             bashio::log.green "Audio succesfully converted..."
             bashio::log.green "Starting SIP Client and calling '$CALL_SIP_URI_VALUE'..."
 
-            n=0
-            while [ "$n" -lt 6 ] && [ -f '/share/dss_voip/current_call_data.log' ]; do
-              n=$(( n + 1 ))
-              sleep 5
-              bashio::log.yellow 'Another call is in progress... Please wait'
-            done
+            # n=0
+            # while [ "$n" -lt 6 ] && [ -f '/share/dss_voip/current_call_data.log' ]; do
+              # n=$(( n + 1 ))
+              # sleep 5
+              # bashio::log.yellow 'Another call is in progress... Please wait'
+            # done
             
-            if [ -f '/share/dss_voip/current_call_data.log' ]; then
-               rm -f '/share/dss_voip/current_call_data.log'
-               bashio::log.red "Forcing this call... Other call's timeout has expired!"
-            fi
-            echo "Calling '$CALL_SIP_URI_VALUE'..."        > /share/dss_voip/current_call_data.log
+            # if [ -f '/share/dss_voip/current_call_data.log' ]; then
+               # rm -f '/share/dss_voip/current_call_data.log'
+               # bashio::log.red "Forcing this call... Other call's timeout has expired!"
+            # fi
+            # echo "Calling '$CALL_SIP_URI_VALUE'..."        > /share/dss_voip/current_call_data.log
 
             ( sleep 20; echo q ) | ( pjsua --app-log-level=3 --config-file '/share/dss_voip/dss_pjsua.conf' $CALL_SIP_URI_VALUE 2> /share/dss_voip/dss_pjsua.log) 
             if [ $? -eq 0 ]; then
@@ -227,7 +227,7 @@ while read -r msg; do
                bashio::log.red \
                  '-----------------------------------------------------------'
             fi
-            rm -f '/share/dss_voip/current_call_data.log'
+            # rm -f '/share/dss_voip/current_call_data.log'
          else
             bashio::log.red \
               '-----------------------------------------------------------'
