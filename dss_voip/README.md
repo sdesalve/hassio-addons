@@ -141,7 +141,7 @@ You will need to call this addon from your Hass.io `automation`/`script` usign f
    ...
     - service: hassio.addon_stdin
       data_template:
-        addon: 89275b70_dss_voip
+        addon: 0d80d722_dss_voip
         input: {"call_sip_uri":"sip:+393334455667@sipserver.com","message_tts":"Write here your message"}
    ...
 ```
