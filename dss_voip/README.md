@@ -103,7 +103,7 @@ Set optional custom command's line options. For reference see [SoX man page][sox
   }
 }
 ```
-**Note**: _call_sip_uri_ in Hass.io service call must end with **@vohippo.com**. An example of URL: "sip:+393334455667@vohippo.com"
+**Note**: _call_sip_uri_ in Hass.io service call must end with **@sip.vohippo.com**. An example of URL: "sip:+393334455667@sip.vohippo.com"
 
 ### [CloudItaliaOrchestra.it VoIP provider][clouditaliaurl]
 ```json
