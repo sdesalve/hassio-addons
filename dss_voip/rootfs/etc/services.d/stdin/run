@@ -1,4 +1,9 @@
-#!/usr/bin/env bashio
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# SDeSalve Hass.io Add-ons: VoIP Notifier for HomeAssistant
+# Runs the Plex Media Server
+# ==============================================================================
+
 set -e
 
 mkdir -p /share/dss_voip
@@ -82,8 +87,9 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
            '-----------------------------------------------------------'
          bashio::log.magenta "                  SIP Client registered."
          bashio::log.magenta
-         bashio::log.magenta " Call <$CALLER_ID_URI_VALUE>/VoIP phone number to check system status."
-         bashio::log.magenta " You'll find logs in dss_pjsua_autoanswer.log..."
+         bashio::log.magenta " Call <$CALLER_ID_URI_VALUE>/VoIP phone number"
+         bashio::log.magenta " to check system status."
+         bashio::log.magenta " You'll find logs in /share/dss_voip/dss_pjsua_autoanswer.log"
          bashio::log.magenta \
            '-----------------------------------------------------------'
       else
@@ -131,10 +137,11 @@ echo ""                                                    >> /share/dss_voip/ds
 # change perms on config files
 chmod 660 /share/dss_voip/dss_*
 
-bashio::log.green "[Info] Listening for messages via stdin service call..."
 # listen for input
-while read -r msg; do
+bashio::log.green "[Info] Listening for messages via stdin service call..."
 
+# shellcheck disable=SC2162
+while read msg; do
    rm -f /share/dss_voip/dss_message_tts.*
    MAKECALL="1"
    # parse JSON
@@ -202,22 +209,9 @@ while read -r msg; do
             bashio::log.green "Audio succesfully converted..."
             bashio::log.green "Starting SIP Client and calling '$CALL_SIP_URI_VALUE'..."
 
-            # n=0
-            # while [ "$n" -lt 6 ] && [ -f '/share/dss_voip/current_call_data.log' ]; do
-              # n=$(( n + 1 ))
-              # sleep 5
-              # bashio::log.yellow 'Another call is in progress... Please wait'
-            # done
-            
-            # if [ -f '/share/dss_voip/current_call_data.log' ]; then
-               # rm -f '/share/dss_voip/current_call_data.log'
-               # bashio::log.red "Forcing this call... Other call's timeout has expired!"
-            # fi
-            # echo "Calling '$CALL_SIP_URI_VALUE'..."        > /share/dss_voip/current_call_data.log
-
             ( sleep 20; echo q ) | ( pjsua --app-log-level=3 --config-file '/share/dss_voip/dss_pjsua.conf' $CALL_SIP_URI_VALUE 2> /share/dss_voip/dss_pjsua.log) 
             if [ $? -eq 0 ]; then
-               bashio::log.green "Call ended..."
+               bashio::log.green "[Info] Call ended..."
             else
                bashio::log.red \
                  '-----------------------------------------------------------'
@@ -257,7 +251,10 @@ while read -r msg; do
       bashio::log.red \
         '-----------------------------------------------------------'
    fi
+
+   # listen for input
+   bashio::log.green "[Info] Listening for messages via stdin service call..."
    
-done
+done < /proc/1/fd/0
 
 chmod -R 770 /share/dss_voip

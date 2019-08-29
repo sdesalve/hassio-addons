@@ -96,10 +96,10 @@ Set optional custom command's line options. For reference see [SoX man page][sox
 ```json
 {
   "sip_parameters": {
-    "caller_id_uri": "sip:username@sip.vohippo.com",
+    "caller_id_uri": "sip:AAAAA12456aaaaaaaa@sip.vohippo.com",
     "realm": "*",
-    "username": "username",
-    "password": "password"
+    "username": "AAAAA12456aaaaaaaa",
+    "password": "ABCDE123456789FGHI"
   }
 }
 ```
@@ -122,15 +122,16 @@ Set optional custom command's line options. For reference see [SoX man page][sox
 ```json
 {
   "sip_parameters": {
-    "caller_id_uri": "sip:phonenumber@sip.messagenet.it",
+    "caller_id_uri": "sip:numerointerno@sip.messagenet.it",
     "realm": "*",
-    "username": "phonenumber",
+    "username": "numerointerno",
     "password": "password"
   },
   "pjsua_custom_options": "--outbound=sip:sip.messagenet.it:5061;lr" 
 }
 ```
-**Note**: _call_sip_uri_ in Hass.io service call must end with **@sip.messagenet.it**. An example of URL: "sip:+393334455667@sip.messagenet.it"
+**Note**: _numerointerno_ is a personal ID (aka URI or Internal number) that you have received with a mail from Messagenet. Be aware: is not your Messagenet User ID that you use to login on Messagenet website.
+_call_sip_uri_ in Hass.io service call must end with **@sip.messagenet.it**. An example of URL: "sip:+393334455667@sip.messagenet.it"
 
 ## How to use
 

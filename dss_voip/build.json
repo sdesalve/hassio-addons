@@ -1,12 +1,11 @@
 {
-    "image": "sdesalve/dss_voip-{arch}",
     "squash": false,
     "build_from": {
-        "aarch64": "arm64v8/alpine:3.10.1",
-        "amd64": "amd64/alpine:3.10.1",
-        "armhf": "arm32v6/alpine:3.10.1",
-        "armv7": "arm32v7/alpine:3.10.1",
-        "i386": "i386/alpine:3.10.1"
+        "aarch64": "hassioaddons/base-aarch64:4.1.1",
+        "amd64": "hassioaddons/base-amd64:4.1.1",
+        "armhf": "hassioaddons/base-armhf:4.1.1",
+        "armv7": "hassioaddons/base-armv7:4.1.1",
+        "i386": "hassioaddons/base-i386:4.1.1"
     },
     "args": {}
 }
