@@ -118,6 +118,19 @@ Set optional custom command's line options. For reference see [SoX man page][sox
 ```
 **Note**: _call_sip_uri_ in Hass.io service call must end with **@voip.eutelia.it**. An example of URL: "sip:+393334455667@voip.eutelia.it"
 
+### [3CX PBX][3cxurl]
+```json
+{
+  "sip_parameters": {
+    "caller_id_uri": "sip:extension@domain.3cx.com.au",
+    "realm": "*",
+    "username": "AuthenticationID",
+    "password": "AuthenticationPassword"
+  }
+}
+```
+**Note**: Use the Authentication ID and Password from the Extension settings for username and password, but the SIP extension number for the caller ID URI
+
 ### [Messagenet VoIP provider][messageneturl]
 ```json
 {
@@ -158,6 +171,8 @@ See this list of special character used in JSON :
 \"  Double quote
 \\  Backslash character
 ```
+
+**Note**: To call external PTSN numbers, use the number in the SIP URI accounting for your dialer settings. For example for 3CX you may use "sip:0412345678@domain.3cx.com.au" and this will call the PTSN number if accessible from your PBX / VoIP provider.
 
 #### Option `call_sip_uri` (Required)
 
@@ -220,3 +235,4 @@ See [LICENSE][license]
 [vohippourl]:  https://www.vohippo.com/index.php?rid=102324
 [clouditaliaurl]: https://orchestra.clouditalia.com
 [messageneturl]: https://messagenet.com/it
+[3cxurl]: https://www.3cx.com/
