@@ -172,6 +172,8 @@ See this list of special character used in JSON :
 \\  Backslash character
 ```
 
+**Note**: To call external PTSN numbers, use the number in the SIP URI accounting for your dialer settings. For example for 3CX you may use "sip:0412345678@domain.3cx.com.au" and this will call the PTSN number if accessible from your PBX / VoIP provider.
+
 #### Option `call_sip_uri` (Required)
 
 Set SIP URL to call. For example: "sip:username@sipserver.com" or "sip:+393334455667@sipserver.com"
