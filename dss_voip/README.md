@@ -118,7 +118,7 @@ Set optional custom command's line options. For reference see [SoX man page][sox
 ```
 **Note**: _call_sip_uri_ in Hass.io service call must end with **@voip.eutelia.it**. An example of URL: "sip:+393334455667@voip.eutelia.it"
 
-### [3CX PBX][3cx.com.au]
+### [3CX PBX][3cxurl]
 ```json
 {
   "sip_parameters": {
@@ -233,3 +233,4 @@ See [LICENSE][license]
 [vohippourl]:  https://www.vohippo.com/index.php?rid=102324
 [clouditaliaurl]: https://orchestra.clouditalia.com
 [messageneturl]: https://messagenet.com/it
+[3cxurl]: https://www.3cx.com/
