@@ -77,6 +77,11 @@ Set optional custom command's line options. For reference see [PJSua man page][p
 
 Set optional custom command's line options. For reference see [SoX man page][soxman].
 
+#### Option `max_call_time` (Optional)
+
+Set maximum call duration in seconds. Accept value between 10 and 120 seconds. Default value if this option is not specified is 50 seconds.
+The timer starts working after a call is initiated and is not related to the call status.
+
 ## Example config for some VoIP providers
 
 ### [Pbxes.com phonebox][pbxesurl]
@@ -172,16 +177,23 @@ See this list of special character used in JSON :
 \\  Backslash character
 ```
 
-**Note**: To call external PTSN numbers, use the number in the SIP URI accounting for your dialer settings. For example for 3CX you may use "sip:0412345678@domain.3cx.com.au" and this will call the PTSN number if accessible from your PBX / VoIP provider.
-
 #### Option `call_sip_uri` (Required)
 
 Set SIP URL to call. For example: "sip:username@sipserver.com" or "sip:+393334455667@sipserver.com"
 Outgooing SIP server can require authentication. Please set an `username` and `password` under `sip_parameters` section in addon config.
 
-#### Option `message_tts` (Required)
+**Note**: To call external PTSN numbers, use the number in the SIP URI accounting for your dialer settings. For example for 3CX you may use "sip:0412345678@domain.3cx.com.au" and this will call the PTSN number if accessible from your PBX / VoIP provider.
 
-Write here your message that will be played thru TTS to the attendee.
+#### Option `message_tts` (Required if `audio_file_url` is not specified)
+
+Write here your message that will be played thru TTS to the attendee. If this option is not specified, the add-on will check presence of `audio_file_url` option. If nor `message_tts` neither `audio_file_url` are specified an error will raise.
+
+
+#### Option `audio_file_url` (Required if `message_tts` is not specified)
+
+Write here a valid URL of a MP3 file that will be played to the attendee. If nor `message_tts` neither `audio_file_url` are specified an error will raise.
+
+**Note**: The length of the audio file should not be longer than 2 minutes 20 seconds. Anything longer and PjSua would start breaking up the voice path after that time. The sound plays fine for the first 2 minutes and 20 seconds and then starts breaking up. With 2 minute audio files, however, the sound plays endlessly. 
 
 
 ## Support
