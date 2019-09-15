@@ -10,10 +10,6 @@ mkdir -p /share/dss_voip
 rm -f /share/dss_voip/dss_*
 chmod -R 770 /share/dss_voip
 
-echo ""                                                     > /share/dss_voip/dss_pjsua.log
-echo ""                                                     > /share/dss_voip/dss_pjsua.conf
-echo ""                                                     > /share/dss_voip/dss_autoanswer.conf
-
 CONFIG_PATH=/data/options.json
 bashio::log.green "[Info] Starting addon..."
 
@@ -195,9 +191,38 @@ while read msg; do
       JSONGOOGLETTS=$( curl --silent -X POST -H "x-ha-access: ${HASSIO_TOKEN}" -H "Content-Type: application/json" -d "${DATA_JSON}" http://hassio/homeassistant/api/tts_get_url)
       echo "JSONGOOGLETTS = '$JSONGOOGLETTS'"              >> /share/dss_voip/dss_pjsua.log
 
-      URLFILEMP3=$(echo "$JSONGOOGLETTS" | jq --raw-output ".url | length" )
-      URLFILEMP3_VALUE=$(echo "$JSONGOOGLETTS" | jq --raw-output ".url" )
-      echo "URLFILEMP3_VALUE = '$URLFILEMP3_VALUE'"        >> /share/dss_voip/dss_pjsua.log
+      if [ "$JSONGOOGLETTS" == "404: Not Found" ]; then
+         MAKECALL="0"
+         bashio::log.red \
+           '-----------------------------------------------------------'
+         bashio::log.red '                Oops! Something went wrong.'
+         bashio::log.red
+         bashio::log.red ' Is Google TTS Services available?'
+         bashio::log.red \
+           '-----------------------------------------------------------'
+         echo "Is Google TTS Services available?"          >> /share/dss_voip/dss_pjsua.log
+         exit 1
+      else
+         URLFILEMP3=$(echo "$JSONGOOGLETTS" | jq --raw-output ".url | length" )
+         if [ "$URLFILEMP3" -gt "0" ]; then
+            URLFILEMP3_VALUE=$(echo "$JSONGOOGLETTS" | jq --raw-output ".url" )
+            echo "URLFILEMP3_VALUE = '$URLFILEMP3_VALUE'"  >> /share/dss_voip/dss_pjsua.log
+
+         else
+            MAKECALL="0"
+            bashio::log.red \
+              '-----------------------------------------------------------'
+            bashio::log.red '                Oops! Something went wrong.'
+            bashio::log.red
+            bashio::log.red ' Cannot get TTS URL file. '
+            bashio::log.red \
+              '-----------------------------------------------------------'
+            echo "Cannot get TTS URL file."                >> /share/dss_voip/dss_pjsua.log
+         fi
+      
+      fi
+
+
    else
       AUDIO_FILE_URL="$(echo "$msg" | jq --raw-output '.audio_file_url | length')"
       if [ "$AUDIO_FILE_URL" -gt "0" ]; then
@@ -230,7 +255,6 @@ while read msg; do
          if [ $? -eq 0 ]; then
             bashio::log.green "Audio succesfully converted..."
             bashio::log.green "Starting SIP Client and calling '$CALL_SIP_URI_VALUE'..."
-
 
             ( sleep $MAX_CALL_TIME_VALUE; echo h; sleep 0.5; echo q ) | ( pjsua --app-log-level=3 --config-file '/share/dss_voip/dss_pjsua.conf' $CALL_SIP_URI_VALUE 2> /share/dss_voip/dss_pjsua.log) 
             if [ $? -eq 0 ]; then
@@ -270,7 +294,7 @@ while read msg; do
         '-----------------------------------------------------------'
       bashio::log.red '                Oops! Something went wrong.'
       bashio::log.red
-      bashio::log.red ' Cannot make call'
+      bashio::log.red ' Cannot make call. Please see logs...'
       bashio::log.red \
         '-----------------------------------------------------------'
    fi
