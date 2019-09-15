@@ -169,6 +169,28 @@ For a list of all Dellmont/Betamax provider and for compare their prices for you
 **Note**: _numerointerno_ is a personal ID (aka URI or Internal number) that you have received with a mail from Messagenet. Be aware: is not your Messagenet User ID that you use to login on Messagenet website.
 _call_sip_uri_ in Hass.io service call must end with **@sip.messagenet.it**. An example of URL: "sip:+393334455667@sip.messagenet.it"
 
+### [FreeVoipDeal][freevoipdeal]/Any other Dellmont/Betamax provider
+```json
+{
+  "sip_parameters": {
+    "caller_id_uri": "sip:username_or_phonenumber@sip.freevoipdeal.com",
+    "realm": "*",
+    "username": "username",
+    "password": "password"
+  },
+  "pjsua_custom_options": "--no-tcp"
+}
+```
+**Note**: _call_sip_uri_ in Hass.io service call must end with **@sip.freevoipdeal.com**. An example of URL: "sip:+393334455667@sip.freevoipdeal.com". 
+Option _username_or_phonenumber_ can be your FreeVoipDeal username or any of authorized numbers.
+Please note that "pjsua_custom_options": "--no-tcp" is mandatory. Without it you'll get an 408 error:
+
+```
+pjsua_app.c ....Call 0 is DISCONNECTED [reason=408 (Request Timeout)]
+```
+
+For a list of all Dellmont/Betamax provider and for get price comparison, please visit [Voip-comparison.com][voipcomparison].
+
 ## How to use
 
 You will need to call this addon from your Hass.io `automation`/`script` usign following yaml service invoke:
@@ -267,3 +289,5 @@ See [LICENSE][license]
 [messageneturl]: https://messagenet.com/it
 [3cxurl]: https://www.3cx.com/
 [voipcomparison]: http://www.voip-comparison.com/
+[voipcomparison]: http://www.voip-comparison.com
+[freevoipdeal]: https://www.freevoipdeal.com
