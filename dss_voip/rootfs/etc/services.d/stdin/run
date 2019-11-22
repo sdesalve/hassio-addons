@@ -105,7 +105,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
    
    SOX_CUSTOM_OPTIONS=$(bashio::config 'sox_custom_options | length')
    if [ "$SOX_CUSTOM_OPTIONS" -gt "0" ]; then 
-      SOX_CUSTOM_OPTIONS_VALUE=$(bashio::config 'custom_options')
+      SOX_CUSTOM_OPTIONS_VALUE=$(bashio::config 'sox_custom_options ')
       echo "SOX_CUSTOM_OPTIONS = \
              '$SOX_CUSTOM_OPTIONS_VALUE'"                  >> /share/dss_voip/dss_pjsua.log
       bashio::log.yellow "SOX_CUSTOM_OPTIONS = '$SOX_CUSTOM_OPTIONS_VALUE'"
