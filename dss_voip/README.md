@@ -73,9 +73,13 @@ Set the URL of the registrar server. If set, addon will auto-answer to call and 
 
 Set optional custom command's line options. For reference see [PJSua man page][pjsuaman].
 
-#### Option `sox_custom_options` (Optional)
+#### Option `sox_custom_options_input_file` (Optional)
 
-Set optional custom command's line options. For reference see [SoX man page][soxman].
+Set optional custom command's line options for input file. For reference see [SoX man page][soxman].
+
+#### Option `sox_custom_options_output_file` (Optional)
+
+Set optional custom command's line options for output file. For reference see [SoX man page][soxman].
 
 #### Option `max_call_time` (Optional)
 

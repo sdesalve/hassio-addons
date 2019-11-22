@@ -36,7 +36,7 @@ LABEL \
     org.label-schema.description="VoIP Notifier for HomeAssistant" \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="Addon VoIP for ${BUILD_ARCH}" \
-    org.label-schema.schema-version="3.0.2" \
+    org.label-schema.schema-version="3.1.0" \
     org.label-schema.url="https://sdesalve.it" \
     org.label-schema.usage="https://github.com/sdesalve/hassio-addons/dss_voip/README.md" \
     org.label-schema.vcs-ref=${BUILD_REF} \

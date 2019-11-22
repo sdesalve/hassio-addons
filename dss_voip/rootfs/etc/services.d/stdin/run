@@ -103,14 +103,24 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
       bashio::log.yellow "PJSUA_CUSTOM_OPTIONS = '$PJSUA_CUSTOM_OPTIONS_VALUE'"
    fi
    
-   SOX_CUSTOM_OPTIONS=$(bashio::config 'sox_custom_options | length')
-   if [ "$SOX_CUSTOM_OPTIONS" -gt "0" ]; then 
-      SOX_CUSTOM_OPTIONS_VALUE=$(bashio::config 'sox_custom_options ')
-      echo "SOX_CUSTOM_OPTIONS = \
-             '$SOX_CUSTOM_OPTIONS_VALUE'"                  >> /share/dss_voip/dss_pjsua.log
-      bashio::log.yellow "SOX_CUSTOM_OPTIONS = '$SOX_CUSTOM_OPTIONS_VALUE'"
+   SOX_CUSTOM_OPTIONS_INPUT_FILE=$(bashio::config 'sox_custom_options_input_file | length')
+   if [ "$SOX_CUSTOM_OPTIONS_INPUT_FILE" -gt "0" ]; then 
+      SOX_CUSTOM_OPTIONS_INPUT_FILE_VALUE=$(bashio::config 'sox_custom_options_input_file ')
+      echo "SOX_CUSTOM_OPTIONS_INPUT_FILE = \
+             '$SOX_CUSTOM_OPTIONS_INPUT_FILE_VALUE'"                  >> /share/dss_voip/dss_pjsua.log
+      bashio::log.yellow "SOX_CUSTOM_OPTIONS_INPUT_FILE = '$SOX_CUSTOM_OPTIONS_INPUT_FILE_VALUE'"
    else
-      SOX_CUSTOM_OPTIONS_VALUE=""
+      SOX_CUSTOM_OPTIONS_INPUT_FILE_VALUE=""
+   fi
+   
+   SOX_CUSTOM_OPTIONS_OUTPUT_FILE=$(bashio::config 'sox_custom_options_output_file | length')
+   if [ "$SOX_CUSTOM_OPTIONS_OUTPUT_FILE" -gt "0" ]; then 
+      SOX_CUSTOM_OPTIONS_OUTPUT_FILE_VALUE=$(bashio::config 'sox_custom_options_output_file ')
+      echo "SOX_CUSTOM_OPTIONS_OUTPUT_FILE = \
+             '$SOX_CUSTOM_OPTIONS_OUTPUT_FILE_VALUE'"                  >> /share/dss_voip/dss_pjsua.log
+      bashio::log.yellow "SOX_CUSTOM_OPTIONS_OUTPUT_FILE = '$SOX_CUSTOM_OPTIONS_OUTPUT_FILE_VALUE'"
+   else
+      SOX_CUSTOM_OPTIONS_OUTPUT_FILE_VALUE=""
    fi
    
    MAX_CALL_TIME=$(bashio::config 'max_call_time | length')
@@ -251,7 +261,7 @@ while read msg; do
       if [ "$URLFILEMP3" -gt "0" ]; then
          # bashio::log.green '[Debug] URLFILEMP3_VALUE = '$URLFILEMP3_VALUE 
          bashio::log.green "Converting audio file '$URLFILEMP3_VALUE'..."
-         sox -V3 $SOX_CUSTOM_OPTIONS_VALUE $URLFILEMP3_VALUE /share/dss_voip/dss_message_tts.wav pad 0.5 1.5 2> /share/dss_voip/dss_sox.log
+         sox -V3 $SOX_CUSTOM_OPTIONS_INPUT_FILE_VALUE $URLFILEMP3_VALUE $SOX_CUSTOM_OPTIONS_OUTPUT_FILE_VALUE /share/dss_voip/dss_message_tts.wav pad 0.5 1.5 2> /share/dss_voip/dss_sox.log
          if [ $? -eq 0 ]; then
             bashio::log.green "Audio succesfully converted..."
             bashio::log.green "Starting SIP Client and calling '$CALL_SIP_URI_VALUE'..."
