@@ -25,6 +25,13 @@ comparison to installing any other Hass.io add-on.
 1. Start the "DSS VoIP Notifier" add-on.
 1. Check the logs of the "DSS VoIP Notifier" add-on to see if everything
     went well. Addons will wait to be invoked from an `automation`/`script`.
+1. Ensure that Google TTS is activated on your Home Assistant configuration.yaml:
+```yaml
+# Text to speech
+tts:
+  - platform: google_translate
+    service_name: google_say
+```
 
 ## Configuration
 
