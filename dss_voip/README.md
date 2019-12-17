@@ -12,7 +12,13 @@ This add-on provides a way to transform a text in a audio file, make a VoIP call
 You will need a valid VoIP account and their parameters to customize this addon config.
 
 Obviously you need to setup [Google Translate Text-to-Speech][googletts].
-The google_translate text-to-speech platform uses unofficial Google Translate Text-to-Speech engine to read a text with natural sounding voices. 
+The google_translate text-to-speech platform uses unofficial Google Translate Text-to-Speech engine to read a text with natural sounding voices. Ensure that Google TTS is activated on your Home Assistant configuration.yaml:
+```yaml
+# Text to speech
+tts:
+  - platform: google_translate
+    service_name: google_say
+```
 
 ## Installation
 
@@ -25,13 +31,6 @@ comparison to installing any other Hass.io add-on.
 1. Start the "DSS VoIP Notifier" add-on.
 1. Check the logs of the "DSS VoIP Notifier" add-on to see if everything
     went well. Addons will wait to be invoked from an `automation`/`script`.
-1. Ensure that Google TTS is activated on your Home Assistant configuration.yaml:
-```yaml
-# Text to speech
-tts:
-  - platform: google_translate
-    service_name: google_say
-```
 
 ## Configuration
 
