@@ -103,12 +103,13 @@ The timer starts working after a call is initiated and is not related to the cal
     "username": "username",
     "password": "password"
   },
-  "pjsua_custom_options": "--ip-addr=_RASPBERRY_IP_ADDRESS_"
+  "pjsua_custom_options": "--ip-addr=RASPBERRY_IP_ADDRESS"
 }
 ```
 
-**Note**: _call_sip_uri_ in Hass.io service call must end with **@fritz.box:5060**. An example of URL: "sip:+393334455667@fritz.box:5060". 
-Please note that "pjsua_custom_options": "--ip-addr=RASPBERRY_IP_ADDRESS" is mandatory and you need to replace _RASPBERRY_IP_ADDRESS_ with your LAN Raspberry IP Address
+**Note**: _call_sip_uri_ in Hass.io service call must end with **@fritz.box:5060**. An example of URL: "sip:+393334455667@fritz.box:5060".
+
+Please note that "pjsua_custom_options": "--ip-addr=_RASPBERRY_IP_ADDRESS_" is mandatory and you need to replace _RASPBERRY_IP_ADDRESS_ with your LAN Raspberry IP Address
 
 ### [Pbxes.com phonebox][pbxesurl]
 ```json
