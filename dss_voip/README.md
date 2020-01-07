@@ -94,6 +94,22 @@ The timer starts working after a call is initiated and is not related to the cal
 
 ## Example config for some VoIP providers
 
+### A Fritz!Box with VoIP PBX
+```json
+{
+  "sip_parameters": {
+    "caller_id_uri": "sip:username@fritz.box:5060",
+    "realm": "*",
+    "username": "username",
+    "password": "password"
+  },
+  "pjsua_custom_options": "--ip-addr=_RASPBERRY_IP_ADDRESS_"
+}
+```
+
+**Note**: _call_sip_uri_ in Hass.io service call must end with **@fritz.box:5060**. An example of URL: "sip:+393334455667@fritz.box:5060". 
+Please note that "pjsua_custom_options": "--ip-addr=RASPBERRY_IP_ADDRESS" is mandatory and you need to replace _RASPBERRY_IP_ADDRESS_ with your LAN Raspberry IP Address
+
 ### [Pbxes.com phonebox][pbxesurl]
 ```json
 {
@@ -132,24 +148,6 @@ The timer starts working after a call is initiated and is not related to the cal
 }
 ```
 **Note**: _call_sip_uri_ in Hass.io service call must end with **@voip.eutelia.it**. An example of URL: "sip:+393334455667@voip.eutelia.it"
-
-### FreeVoipDeal/Any other Dellmont/Betamax provider
-```json
-{
-  "sip_parameters": {
-    "caller_id_uri": "sip:username_or_phonenumber@sip.freevoipdeal.com",
-    "realm": "*",
-    "username": "username",
-    "password": "password"
-  },
-  "pjsua_custom_options": "--no-tcp"
-}
-```
-**Note**: _call_sip_uri_ in Hass.io service call must end with **@sip.freevoipdeal.com**. An example of URL: "sip:+393334455667@sip.freevoipdeal.com". 
-Option _username_or_phonenumber_ can be your FreeVoipDeal username or any of authorized numbers.
-Please note that **"pjsua_custom_options": "--no-tcp"** option is mandatory. 
-
-For a list of all Dellmont/Betamax provider and for compare their prices for your country, please visit [Voip-comparison.com][voipcomparison]
 
 ### [3CX PBX][3cxurl]
 ```json
