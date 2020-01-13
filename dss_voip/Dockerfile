@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/base:4.1.1
+ARG BUILD_FROM=hassioaddons/base:6.0.1
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -15,9 +15,9 @@ COPY rootfs /
 RUN apk add --no-cache \
     coreutils=8.31-r0 \
     wget=1.20.3-r0 \
-    sox=14.4.2-r5 \
-    pjsua=2.8-r0 \
-    screen=4.6.2-r0
+    sox \
+    pjsua \
+    screen
     
 # Build arguments
 ARG BUILD_ARCH
@@ -36,7 +36,7 @@ LABEL \
     org.label-schema.description="VoIP Notifier for HomeAssistant" \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="Addon VoIP for ${BUILD_ARCH}" \
-    org.label-schema.schema-version="3.1.0" \
+    org.label-schema.schema-version="3.1.1" \
     org.label-schema.url="https://sdesalve.it" \
     org.label-schema.usage="https://github.com/sdesalve/hassio-addons/dss_voip/README.md" \
     org.label-schema.vcs-ref=${BUILD_REF} \
