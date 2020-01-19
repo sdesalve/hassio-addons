@@ -17,7 +17,9 @@ The google_translate text-to-speech platform uses unofficial Google Translate Te
 # Text to speech
 tts:
   - platform: google_translate
-    service_name: google_say
+    service_name: google_translate_say
+    language: 'it'
+    ...
 ```
 
 ## Installation
@@ -91,6 +93,11 @@ Set optional custom command's line options for output file. For reference see [S
 
 Set maximum call duration in seconds. Accept value between 10 and 120 seconds. Default value if this option is not specified is 50 seconds.
 The timer starts working after a call is initiated and is not related to the call status.
+
+#### Option `platform_tts` (Optional)
+
+Specify Text-to-speech platform to use. Default value if this option is not specified is [_google_translate_][google_tts].
+For a list of available TTS integration please see [Hassio integrations][tts_integration]
 
 ## Example config for some VoIP providers
 
@@ -300,3 +307,5 @@ See [LICENSE][license]
 [voipcomparison]: http://www.voip-comparison.com/
 [voipcomparison]: http://www.voip-comparison.com
 [freevoipdeal]: https://www.freevoipdeal.com
+[tts_integration]: https://www.home-assistant.io/integrations/#text-to-speech
+[google_tts]: https://www.home-assistant.io/integrations/google_translate

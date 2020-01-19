@@ -8,6 +8,8 @@ ENV \
     S6_CMD_WAIT_FOR_SERVICES=1 \
     TERM="xterm-256color"
 
+ENV LANG C.UTF-8
+
 # Copy root filesystem
 COPY rootfs /
 
@@ -36,7 +38,7 @@ LABEL \
     org.label-schema.description="VoIP Notifier for HomeAssistant" \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="Addon VoIP for ${BUILD_ARCH}" \
-    org.label-schema.schema-version="3.1.1" \
+    org.label-schema.schema-version="3.1.5" \
     org.label-schema.url="https://sdesalve.it" \
     org.label-schema.usage="https://github.com/sdesalve/hassio-addons/dss_voip/README.md" \
     org.label-schema.vcs-ref=${BUILD_REF} \
