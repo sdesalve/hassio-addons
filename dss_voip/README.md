@@ -40,15 +40,12 @@ comparison to installing any other Hass.io add-on.
 
 DSS VoIP Notifier add-on configuration:
 
-```json
-{
-  "sip_parameters": {
-    "caller_id_uri": "sip:username@sipserver.com",
-    "realm": "*",
-    "username": "username",
-    "password": "password"
-  }
-}
+```yaml
+sip_parameters:
+  caller_id_uri: 'sip:username@sipserver.com'
+  realm: '*'
+  username: 'username'
+  password: 'password'
 ```
 **Note**: _This is just an example, don't copy and paste it! Create your own!_
 
@@ -102,16 +99,13 @@ For a list of available TTS integration please see [Hassio integrations][tts_int
 ## Example config for some VoIP providers
 
 ### A Fritz!Box with VoIP PBX
-```json
-{
-  "sip_parameters": {
-    "caller_id_uri": "sip:username@fritz.box:5060",
-    "realm": "*",
-    "username": "username",
-    "password": "password"
-  },
-  "pjsua_custom_options": "--ip-addr=RASPBERRY_IP_ADDRESS"
-}
+```yaml
+sip_parameters:
+  caller_id_uri: 'sip:username@fritz.box:5060'
+  realm: '*'
+  username: 'username'
+  password: 'password'
+pjsua_custom_options: '--ip-addr=RASPBERRY_IP_ADDRESS'
 ```
 
 **Note**: _call_sip_uri_ in Hass.io service call must end with **@fritz.box:5060**. An example of URL: "sip:+393334455667@fritz.box:5060".
@@ -119,83 +113,66 @@ For a list of available TTS integration please see [Hassio integrations][tts_int
 Please note that "pjsua_custom_options": "--ip-addr=_RASPBERRY_IP_ADDRESS_" is mandatory and you need to replace _RASPBERRY_IP_ADDRESS_ with your LAN Raspberry IP Address
 
 ### [Pbxes.com phonebox][pbxesurl]
-```json
-{
-  "sip_parameters": {
-    "caller_id_uri": "sip:extension@pbxes.com",
-    "realm": "*",
-    "username": "extension",
-    "password": "password"
-  }
-}
+```yaml
+sip_parameters:
+  caller_id_uri: 'sip:extension@pbxes.com'
+  realm: '*'
+  username: 'extension'
+  password: 'password'
+
 ```
 **Note**: _call_sip_uri_ in Hass.io service call must end with **@pbxes.com**. An example of URL: "sip:+393334455667@pbxes.com"
 
 ### [Vohippo.com VoIP provider][vohippourl]
-```json
-{
-  "sip_parameters": {
-    "caller_id_uri": "sip:AAAAA12456aaaaaaaa@sip.vohippo.com",
-    "realm": "*",
-    "username": "AAAAA12456aaaaaaaa",
-    "password": "ABCDE123456789FGHI"
-  }
-}
+```yaml
+sip_parameters:
+  caller_id_uri: 'sip:AAAAA12456aaaaaaaa@sip.vohippo.com'
+  realm: '*'
+  username: 'AAAAA12456aaaaaaaa'
+  password: 'ABCDE123456789FGHI'
 ```
 **Note**: _call_sip_uri_ in Hass.io service call must end with **@sip.vohippo.com**. An example of URL: "sip:+393334455667@sip.vohippo.com"
 
 ### [CloudItaliaOrchestra.it VoIP provider][clouditaliaurl]
-```json
-{
-  "sip_parameters": {
-    "caller_id_uri": "sip:phonenumber@voip.eutelia.it",
-    "realm": "*",
-    "username": "phonenumber",
-    "password": "password"
-  }
-}
+```yaml
+sip_parameters:
+  caller_id_uri: 'sip:phonenumber@voip.eutelia.it'
+  realm: '*'
+  username: 'phonenumber'
+  password: 'password'
 ```
 **Note**: _call_sip_uri_ in Hass.io service call must end with **@voip.eutelia.it**. An example of URL: "sip:+393334455667@voip.eutelia.it"
 
 ### [3CX PBX][3cxurl]
-```json
-{
-  "sip_parameters": {
-    "caller_id_uri": "sip:extension@domain.3cx.com.au",
-    "realm": "*",
-    "username": "AuthenticationID",
-    "password": "AuthenticationPassword"
-  }
-}
+```yaml
+sip_parameters:
+  caller_id_uri: 'sip:extension@domain.3cx.com.au'
+  realm: '*'
+  username: 'AuthenticationID'
+  password: 'AuthenticationPassword'
 ```
 **Note**: Use the Authentication ID and Password from the Extension settings for username and password, but the SIP extension number for the caller ID URI
 
 ### [Messagenet VoIP provider][messageneturl]
-```json
-{
-  "sip_parameters": {
-    "caller_id_uri": "sip:numerointerno@sip.messagenet.it",
-    "realm": "*",
-    "username": "numerointerno",
-    "password": "password"
-  },
-  "pjsua_custom_options": "--outbound=sip:sip.messagenet.it:5061;lr" 
-}
+```yaml
+sip_parameters:
+  caller_id_uri: 'sip:numerointerno@sip.messagenet.it'
+  realm: '*'
+  username: 'numerointerno'
+  password: 'password'
+pjsua_custom_options: '--outbound=sip:sip.messagenet.it:5061;lr'
 ```
 **Note**: _numerointerno_ is a personal ID (aka URI or Internal number) that you have received with a mail from Messagenet. Be aware: is not your Messagenet User ID that you use to login on Messagenet website.
 _call_sip_uri_ in Hass.io service call must end with **@sip.messagenet.it**. An example of URL: "sip:+393334455667@sip.messagenet.it"
 
 ### [FreeVoipDeal][freevoipdeal]/Any other Dellmont/Betamax provider
-```json
-{
-  "sip_parameters": {
-    "caller_id_uri": "sip:username_or_phonenumber@sip.freevoipdeal.com",
-    "realm": "*",
-    "username": "username",
-    "password": "password"
-  },
-  "pjsua_custom_options": "--no-tcp"
-}
+```yaml
+sip_parameters:
+  caller_id_uri: 'sip:username_or_phonenumber@sip.freevoipdeal.com'
+  realm: '*'
+  username: 'username'
+  password: 'password'
+pjsua_custom_options: '--no-tcp'
 ```
 **Note**: _call_sip_uri_ in Hass.io service call must end with **@sip.freevoipdeal.com**. An example of URL: "sip:+393334455667@sip.freevoipdeal.com". 
 Option _username_or_phonenumber_ can be your FreeVoipDeal username or any of authorized numbers.

@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
-# SDeSalve Hass.io Add-ons: VoIP Notifier for HomeAssistant
-# Runs the Plex Media Server
+# SDeSalve HomeAssistant Addon: VoIP Notifier for HomeAssistant
+# Make VoIP Calls from HomeAssistant
 # ==============================================================================
 
 set -e
