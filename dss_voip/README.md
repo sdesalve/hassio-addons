@@ -221,12 +221,15 @@ Outgooing SIP server can require authentication. Please set an `username` and `p
 
 Write here your message that will be played thru TTS to the attendee. If this option is not specified, the add-on will check presence of `audio_file_url` option. If nor `message_tts` neither `audio_file_url` are specified an error will raise.
 
-
 #### Option `audio_file_url` (Required if `message_tts` is not specified)
 
 Write here a valid URL of a MP3 file that will be played to the attendee. If nor `message_tts` neither `audio_file_url` are specified an error will raise.
 
 **Note**: The length of the audio file should not be longer than 2 minutes 20 seconds. Anything longer and PjSua would start breaking up the voice path after that time. The sound plays fine for the first 2 minutes and 20 seconds and then starts breaking up. With 2 minute audio files, however, the sound plays endlessly. 
+
+#### Option `call_duration` (Optional)
+
+Set maximum call duration in seconds. Be aware that timer starts running after a call is initiated and is not related to the call status. If this option is specified `max_call_time` will be overwrited for service invocation.
 
 
 ## Support

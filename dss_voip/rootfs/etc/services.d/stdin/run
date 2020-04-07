@@ -61,7 +61,6 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
       bashio::log.yellow "PJSUA_CUSTOM_OPTIONS = '$PJSUA_CUSTOM_OPTIONS_VALUE'"
    fi
 
-   
    if [ "$SIP_SERVER_URI" -gt "0" ]; then 
       bashio::log.green "[Info] Registering as SIP Client..."
       
@@ -197,6 +196,13 @@ while read -r msg; do
    bashio::log.green "[Info] Received messages ${msg}"
    echo "[Info] Received messages '${msg}'"                >> /share/dss_voip/dss_pjsua.log
    
+   CALL_DURATION="$(echo "$msg" | jq --raw-output '.call_duration | length')"
+   CALL_DURATION_VALUE=0
+   if [ "$CALL_DURATION" -gt "0" ]; then
+      CALL_DURATION_VALUE="$(echo "$msg" | jq --raw-output '.call_duration')"
+      bashio::log.yellow "CALL_DURATION = '$CALL_DURATION_VALUE'"
+   fi
+
    CALL_SIP_URI="$(echo "$msg" | jq --raw-output '.call_sip_uri | length')"
    if [ "$CALL_SIP_URI" -gt "0" ]; then
       CALL_SIP_URI_VALUE="$(echo "$msg" | jq --raw-output '.call_sip_uri')"
@@ -297,6 +303,12 @@ while read -r msg; do
          if [ $? -eq 0 ]; then
             bashio::log.green "Audio succesfully converted..."
             bashio::log.green "Starting SIP Client and calling '$CALL_SIP_URI_VALUE'..."
+
+
+            if [ "$CALL_DURATION_VALUE" -gt "0" ]; then
+               MAX_CALL_TIME_VALUE="$CALL_DURATION_VALUE"
+            fi
+            bashio::log.green "This call will be terminated after '$MAX_CALL_TIME_VALUE' seconds."
 
             ( sleep $MAX_CALL_TIME_VALUE; echo h; sleep 0.5; echo q ) | ( pjsua --app-log-level=3 --config-file '/share/dss_voip/dss_pjsua.conf' $CALL_SIP_URI_VALUE 2> /share/dss_voip/dss_pjsua.log) 
             if [ $? -eq 0 ]; then
