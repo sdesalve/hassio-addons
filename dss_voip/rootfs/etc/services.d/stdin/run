@@ -100,6 +100,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
       echo "--play-file /etc/dss_autoanswer.wav"           >> /share/dss_voip/dss_autoanswer.conf
       echo "--duration 30"                                 >> /share/dss_voip/dss_autoanswer.conf
       echo "--auto-answer 200"                             >> /share/dss_voip/dss_autoanswer.conf
+      
       echo "--auto-loop"                                   >> /share/dss_voip/dss_autoanswer.conf
       echo "--max-calls 5"                                 >> /share/dss_voip/dss_autoanswer.conf
 
@@ -157,6 +158,14 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
    MAX_CALL_TIME=$(bashio::config 'max_call_time | length')
    if [ "$MAX_CALL_TIME" -gt "0" ]; then 
       MAX_CALL_TIME_VALUE=$(bashio::config 'max_call_time')
+
+      if [ "$MAX_CALL_TIME_VALUE" -gt "120" ]; then
+        MAX_CALL_TIME_VALUE=120
+      elif [ "$MAX_CALL_TIME_VALUE" == "-1" ]; then
+        MAX_CALL_TIME_VALUE=-1
+      elif [ "$MAX_CALL_TIME_VALUE" -lt "10" ]; then
+        MAX_CALL_TIME_VALUE=10
+      fi
       echo "MAX_CALL_TIME = \
              '$MAX_CALL_TIME'"                             >> /share/dss_voip/dss_pjsua.log
       bashio::log.yellow "MAX_CALL_TIME = '$MAX_CALL_TIME_VALUE'"
@@ -164,7 +173,11 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
       MAX_CALL_TIME_VALUE=50
    fi
    
-   echo "--duration $MAX_CALL_TIME_VALUE"                  >> /share/dss_voip/dss_pjsua.conf
+   if [ "$MAX_CALL_TIME_VALUE" == "-1" ]; then
+     echo "--duration 120"                                 >> /share/dss_voip/dss_pjsua.conf
+   else 
+     echo "--duration $MAX_CALL_TIME_VALUE"                >> /share/dss_voip/dss_pjsua.conf
+   fi
    echo ""                                                 >> /share/dss_voip/dss_pjsua.conf
    echo "sip_parameters = '$SIP_PARAMETERS_VALUE'"         >> /share/dss_voip/dss_pjsua.log
    
@@ -304,10 +317,21 @@ while read -r msg; do
             bashio::log.green "Audio succesfully converted..."
             bashio::log.green "Starting SIP Client and calling '$CALL_SIP_URI_VALUE'..."
 
-
             if [ "$CALL_DURATION_VALUE" -gt "0" ]; then
                MAX_CALL_TIME_VALUE="$CALL_DURATION_VALUE"
-            fi
+            elif [ "$CALL_DURATION_VALUE" == "-1" ]; then
+               MAX_CALL_TIME_VALUE=-1
+            fi 
+
+            if [ "$MAX_CALL_TIME_VALUE" == "-1" ]; then 
+               MAX_CALL_TIME_VALUE=$(soxi -d /share/dss_voip/dss_message_tts.wav | awk -F: '{ print ($1 * 3600) + ($2 * 60) + $3 }')
+               if [ $(echo "$MAX_CALL_TIME_VALUE < 1" | bc) -eq 1 ]; then
+                 # Sanity check, might need to increase this value, but we don't want pager/intercom calls stacking up 
+                 # in the PBX's queue.
+                 MAX_CALL_TIME_VALUE=1
+               fi
+            fi 
+
             bashio::log.green "This call will be terminated after '$MAX_CALL_TIME_VALUE' seconds."
 
             ( sleep $MAX_CALL_TIME_VALUE; echo h; sleep 0.5; echo q ) | ( pjsua --app-log-level=3 --config-file '/share/dss_voip/dss_pjsua.conf' $CALL_SIP_URI_VALUE 2> /share/dss_voip/dss_pjsua.log) 
