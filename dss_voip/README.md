@@ -88,8 +88,8 @@ Set optional custom command's line options for output file. For reference see [S
 
 #### Option `max_call_time` (Optional)
 
-Set maximum call duration in seconds. Accept value between 10 and 120 seconds. Default value if this option is not specified is 50 seconds.
-The timer starts working after a call is initiated and is not related to the call status.
+Set maximum call duration in seconds. Accept value between 10 and 120 seconds, but must be in single quotes. Default value if this option is not specified is 50 seconds.  If set to '-1' max_call_time is set to the length of the wav file being read.  This setting is to accommodate auto-answering systems like pagers and intercoms.  Be advised that many such systems will present insert a short beep at the start of the page.  It may be adventitious to pad some small amount of silence at that start of the wav file.  See `call_duration` below.
+The timer starts working after a call is initiated and is not related to the call status.  
 
 #### Option `platform_tts` (Optional)
 
@@ -229,7 +229,7 @@ Write here a valid URL of a MP3 file that will be played to the attendee. If nor
 
 #### Option `call_duration` (Optional)
 
-Set maximum call duration in seconds. Be aware that timer starts running after a call is initiated and is not related to the call status. If this option is specified `max_call_time` will be overwrited for service invocation.
+Set maximum call duration in seconds. Be aware that timer starts running after a call is initiated and is not related to the call status. If this option is specified `max_call_time` will be overwrited for service invocation.  If set to '-1' this will set the call duration to the length of the wav file.  See `max_call_time` above.
 
 
 ## Support
