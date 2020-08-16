@@ -51,7 +51,7 @@ sip_parameters:
 
 ### Basic options
 
-#### Option `sip_parameters`: `callerd_id` (Required)
+#### Option `sip_parameters`: `caller_id_uri` (Required)
 
 Set SIP URL of the caller account (i.e. From header). For example: "sip:username@sipserver.com"
 
