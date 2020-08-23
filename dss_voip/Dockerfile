@@ -15,7 +15,7 @@ COPY rootfs /
 
 # Setup base
 RUN apk add --no-cache \
-    coreutils=8.31-r0 \
+    coreutils=8.32-r0 \
     wget=1.20.3-r0 \
     sox \
     pjsua \
@@ -39,7 +39,7 @@ LABEL \
     org.label-schema.description="VoIP Notifier for HomeAssistant" \
     org.label-schema.build-date=${BUILD_DATE} \
     org.label-schema.name="Addon VoIP for ${BUILD_ARCH}" \
-    org.label-schema.schema-version="3.3.5" \
+    org.label-schema.schema-version="3.3.4" \
     org.label-schema.url="https://sdesalve.it" \
     org.label-schema.usage="https://github.com/sdesalve/hassio-addons/dss_voip/README.md" \
     org.label-schema.vcs-ref=${BUILD_REF} \
