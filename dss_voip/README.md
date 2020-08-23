@@ -1,10 +1,10 @@
-# SDeSalve Home Assistant Add-ons: DSS VoIP Notifier
+# SDeSalve Hass.io Add-ons: DSS VoIP Notifier
 
 ![Supports aarch64 Architecture][aarch64-shield] ![Supports amd64 Architecture][amd64-shield] ![Supports armhf Architecture][armhf-shield] ![Supports armv7 Architecture][armv7-shield] ![Supports i386 Architecture][i386-shield]
 
 [![Buy me a coffee][buymeacoffee-shield]][buymeacoffee] [![Support my work on Paypal][paypal-shield]][paypal]
 
-This add-on allows you to make VoIP calls from Home Assistant.
+This add-on allows you to make VoIP calls from Hass.io.
 
 ## Features
 
@@ -25,9 +25,9 @@ tts:
 ## Installation
 
 The installation of this add-on is pretty straightforward and not different in
-comparison to installing any other Home Assistant add-on.
+comparison to installing any other Hass.io add-on.
 
-1. Add my Home Assistant add-ons repository (**https://github.com/sdesalve/hassio-addons**) to your Home Assistant instance.
+1. Add my Hass.io add-ons repository (**https://github.com/sdesalve/hassio-addons**) to your Hass.io instance.
 1. Install the "DSS VoIP Notifier" add-on.
 1. Configure at least the `caller_id_uri`, `username`, and `password` options.
 1. Start the "DSS VoIP Notifier" add-on.
@@ -108,7 +108,7 @@ sip_parameters:
 pjsua_custom_options: '--ip-addr=RASPBERRY_IP_ADDRESS'
 ```
 
-**Note**: _call_sip_uri_ in Home Assistant service call must end with **@fritz.box:5060**. An example of URL: "sip:+393334455667@fritz.box:5060".
+**Note**: _call_sip_uri_ in Hass.io service call must end with **@fritz.box:5060**. An example of URL: "sip:+393334455667@fritz.box:5060".
 
 Please note that "pjsua_custom_options": "--ip-addr=_RASPBERRY_IP_ADDRESS_" is mandatory and you need to replace _RASPBERRY_IP_ADDRESS_ with your LAN Raspberry IP Address
 
@@ -121,7 +121,7 @@ sip_parameters:
   password: 'password'
 
 ```
-**Note**: _call_sip_uri_ in Home Assistant service call must end with **@pbxes.com**. An example of URL: "sip:+393334455667@pbxes.com"
+**Note**: _call_sip_uri_ in Hass.io service call must end with **@pbxes.com**. An example of URL: "sip:+393334455667@pbxes.com"
 
 ### [Vohippo.com VoIP provider][vohippourl]
 ```yaml
@@ -131,7 +131,7 @@ sip_parameters:
   username: 'AAAAA12456aaaaaaaa'
   password: 'ABCDE123456789FGHI'
 ```
-**Note**: _call_sip_uri_ in Home Assistant service call must end with **@sip.vohippo.com**. An example of URL: "sip:+393334455667@sip.vohippo.com"
+**Note**: _call_sip_uri_ in Hass.io service call must end with **@sip.vohippo.com**. An example of URL: "sip:+393334455667@sip.vohippo.com"
 
 ### [CloudItaliaOrchestra.it VoIP provider][clouditaliaurl]
 ```yaml
@@ -141,7 +141,7 @@ sip_parameters:
   username: 'phonenumber'
   password: 'password'
 ```
-**Note**: _call_sip_uri_ in Home Assistant service call must end with **@voip.eutelia.it**. An example of URL: "sip:+393334455667@voip.eutelia.it"
+**Note**: _call_sip_uri_ in Hass.io service call must end with **@voip.eutelia.it**. An example of URL: "sip:+393334455667@voip.eutelia.it"
 
 ### [3CX PBX][3cxurl]
 ```yaml
@@ -163,7 +163,7 @@ sip_parameters:
 pjsua_custom_options: '--outbound=sip:sip.messagenet.it:5061;lr'
 ```
 **Note**: _numerointerno_ is a personal ID (aka URI or Internal number) that you have received with a mail from Messagenet. Be aware: is not your Messagenet User ID that you use to login on Messagenet website.
-_call_sip_uri_ in Home Assistant service call must end with **@sip.messagenet.it**. An example of URL: "sip:+393334455667@sip.messagenet.it"
+_call_sip_uri_ in Hass.io service call must end with **@sip.messagenet.it**. An example of URL: "sip:+393334455667@sip.messagenet.it"
 
 ### [FreeVoipDeal][freevoipdeal]/Any other Dellmont/Betamax provider
 ```yaml
@@ -174,7 +174,7 @@ sip_parameters:
   password: 'password'
 pjsua_custom_options: '--no-tcp'
 ```
-**Note**: _call_sip_uri_ in Home Assistant service call must end with **@sip.freevoipdeal.com**. An example of URL: "sip:+393334455667@sip.freevoipdeal.com". 
+**Note**: _call_sip_uri_ in Hass.io service call must end with **@sip.freevoipdeal.com**. An example of URL: "sip:+393334455667@sip.freevoipdeal.com". 
 Option _username_or_phonenumber_ can be your FreeVoipDeal username or any of authorized numbers.
 Please note that "pjsua_custom_options": "--no-tcp" is mandatory. Without it you'll get an 408 error:
 
@@ -186,7 +186,7 @@ For a list of all Dellmont/Betamax provider and for get price comparison, please
 
 ## How to use
 
-You will need to call this addon from your Home Assistant `automation`/`script` usign following yaml service invoke:
+You will need to call this addon from your Hass.io `automation`/`script` usign following yaml service invoke:
 
 ```yaml
    ...
