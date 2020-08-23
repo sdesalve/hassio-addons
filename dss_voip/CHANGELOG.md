@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.3.5
+
+- Revert Upgrades coreutils to 8.31-r0
 ## 3.3.4
 
 - Replace Hass.io with Home Assistant
