@@ -184,6 +184,18 @@ pjsua_app.c ....Call 0 is DISCONNECTED [reason=408 (Request Timeout)]
 
 For a list of all Dellmont/Betamax provider and for get price comparison, please visit [Voip-comparison.com][voipcomparison].
 
+### [2talk][2talkurl]
+2talk is a NZ based VoIP and internet provider. Getting it set up with this addon was easy.
+```yaml
+sip_parameters:
+  caller_id_uri: 'sip:areacodeandnumber@2talk.co.nz:5060'
+  realm: '*'
+  username: areacodeandnumber
+  password: secretpassword
+  ```
+Where areacodeandnumber is in the format 035556789 (03 is the area code, the phone number is 5556789). This is the same login you would use in connecting your VoIP phone to 2talk.
+
+
 ## How to use
 
 You will need to call this addon from your Hass.io `automation`/`script` usign following yaml service invoke:
@@ -289,3 +301,4 @@ See [LICENSE][license]
 [freevoipdeal]: https://www.freevoipdeal.com
 [tts_integration]: https://www.home-assistant.io/integrations/#text-to-speech
 [google_tts]: https://www.home-assistant.io/integrations/google_translate
+[2talkurl]: https://www.2talk.co.nz/
