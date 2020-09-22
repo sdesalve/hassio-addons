@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/base:7.1.0
+ARG BUILD_FROM=hassioaddons/base:8.0.1
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -15,8 +15,8 @@ COPY rootfs /
 
 # Setup base
 RUN apk add --no-cache \
-    coreutils=8.31-r0 \
-    wget=1.20.3-r0 \
+    coreutils=8.32-r0 \
+    wget=1.20.3-r1 \
     sox \
     pjsua \
     screen \
@@ -31,17 +31,19 @@ ARG BUILD_VERSION
 # Labels
 LABEL \
     io.hass.name="DSS VoIP Notifier" \
-    io.hass.description="VoIP Notifier for HomeAssistant" \
+    io.hass.description="VoIP Notifier for Home Assistant" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
     maintainer="SDeSalve <me@sdesalve.it>" \
-    org.label-schema.description="VoIP Notifier for HomeAssistant" \
-    org.label-schema.build-date=${BUILD_DATE} \
-    org.label-schema.name="Addon VoIP for ${BUILD_ARCH}" \
-    org.label-schema.schema-version="3.3.3" \
-    org.label-schema.url="https://sdesalve.it" \
-    org.label-schema.usage="https://github.com/sdesalve/hassio-addons/dss_voip/README.md" \
-    org.label-schema.vcs-ref=${BUILD_REF} \
-    org.label-schema.vcs-url="https://github.com/sdesalve/hassio-addons/dss_voip" \
-    org.label-schema.vendor="SDeSalve"
+    org.opencontainers.image.title="Addon VoIP for ${BUILD_ARCH}" \
+    org.opencontainers.image.description="VoIP Notifier for Home Assistant" \
+    org.opencontainers.image.vendor="SDeSalve.it" \
+    org.opencontainers.image.authors="SDeSalve <me@sdesalve.it>" \
+    org.opencontainers.image.licenses="CC Attribution-NonCommercial 4.0 International" \
+    org.opencontainers.image.url="https://sdesalve.it" \
+    org.opencontainers.image.source="https://github.com/sdesalve/hassio-addons/dss_voip" \
+    org.opencontainers.image.documentation="https://github.com/sdesalve/hassio-addons/dss_voip/README.md" \
+    org.opencontainers.image.created=${BUILD_DATE} \
+    org.opencontainers.image.revision=${BUILD_REF} \
+    org.opencontainers.image.version=${BUILD_VERSION}
