@@ -334,7 +334,8 @@ while read -r msg; do
 
             bashio::log.green "This call will be terminated after '$MAX_CALL_TIME_VALUE' seconds."
 
-            ( sleep $MAX_CALL_TIME_VALUE; echo h; sleep 0.5; echo q ) | ( pjsua --app-log-level=3 --config-file '/share/dss_voip/dss_pjsua.conf' $CALL_SIP_URI_VALUE 2> /share/dss_voip/dss_pjsua.log) 
+            ( sleep $MAX_CALL_TIME_VALUE; echo h; sleep 0.5; echo q ) | ( pjsua --app-log-level=3 --config-file '/share/dss_voip/dss_pjsua.conf' $CALL_SIP_URI_VALUE 2> /share/dss_voip/dss_pjsua.log) || bashio::log.red "[Error] pjsua Exit code: "$?
+            
             if [ $? -eq 0 ]; then
                bashio::log.green "[Info] Call ended..."
             else
