@@ -3,8 +3,8 @@
 
 ## Prerequisites
 
-You'll need an account and an API token on https://portal.monoclecam.com. 
-Obviously you'll need a camera and it must be added on Monoclecam portal.
+You'll need an account and an API token on [Monocle Cam Portal](https://portal.monoclecam.com). 
+Obviously you'll need a camera and it must be added to your profile.
 
 ## Installation
 
@@ -34,7 +34,7 @@ monocle_token: 'your_very_long_token'
 
 #### Option `monocle_token` (Required)
 
-Set your API token generated on https://portal.monoclecam.com/account 
+Set your API token generated on your [Monocle Cam Account page](https://portal.monoclecam.com/account 
 
 ## Support
 
