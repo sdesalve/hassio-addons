@@ -15,6 +15,7 @@ ENV LANG C.UTF-8
 # directory
 # ---------------------------------------
 RUN mkdir -p /tmp/monocle
+RUN mkdir -p /etc/monocle
 
 # ---------------------------------------
 # Install Monocle Gateway dependencies
