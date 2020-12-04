@@ -23,8 +23,8 @@ This add-on is not created, developed, affiliated, supported, maintained or endo
 All product names, logos, brands, trademarks and registered trademarks are property of their respective owners. All company, product, and service names used are for identification purposes only.
 Use of these names, logos, trademarks, and brands does not imply endorsement.
 
-[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
+[aarch64-shield]: https://img.shields.io/badge/aarch64-no-red.svg
 [armhf-shield]: https://img.shields.io/badge/armhf-no-red.svg
 [armv7-shield]: https://img.shields.io/badge/armv7-no-red.svg
 [i386-shield]: https://img.shields.io/badge/i386-no-red.svg
