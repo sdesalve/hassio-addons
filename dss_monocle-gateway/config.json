@@ -1,6 +1,6 @@
 {
   "name": "DSS Monocle Gateway",
-  "version": "0.8.2",
+  "version": "0.9.0",
   "slug": "dss_monocle-gateway",
   "description": "Monocle Gateway Add-On for Home Assistant",
   "auto_uart": true,
@@ -8,8 +8,7 @@
   "startup": "services",
   "arch": [
     "aarch64",
-    "amd64",
-    "i386"
+    "amd64"
   ],
   "boot": "auto",
   "options": {
