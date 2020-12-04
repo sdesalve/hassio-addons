@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/base:8.0.3
+ARG BUILD_FROM=hassioaddons/debian-base:3.2.3
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -16,6 +16,10 @@ ENV LANG C.UTF-8
 # ---------------------------------------
 RUN mkdir -p /tmp/monocle
 RUN mkdir -p /etc/monocle
+
+# Setup base system
+ARG BUILD_ARCH=amd64
+# hadolint ignore=SC2181
 
 # ---------------------------------------
 # Install Monocle Gateway dependencies
