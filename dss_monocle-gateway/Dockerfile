@@ -1,14 +1,6 @@
-ARG BUILD_FROM=hassioaddons/debian-base:3.2.3
+ARG BUILD_FROM=hassioaddons/base:8.0.3
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
-
-# Environment variables
-ENV \
-    S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
-    S6_CMD_WAIT_FOR_SERVICES=1 \
-    TERM="xterm-256color"
-
-ENV LANG C.UTF-8
 
 # ---------------------------------------
 # Create Monocle Gateway configuration 
@@ -66,9 +58,11 @@ EXPOSE 443/tcp
 # ---------------------------------------
 EXPOSE 62000-62100/udp
 
-COPY run.sh /run.sh
-RUN chmod +x /run.sh
-ENTRYPOINT ["/bin/bash", "-c", "/run.sh"]
+# Copy data for add-on
+COPY run.sh /
+RUN chmod a+x /run.sh
+
+CMD ["/run.sh"]
 
 # Labels
 LABEL \
