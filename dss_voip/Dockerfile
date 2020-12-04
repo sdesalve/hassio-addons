@@ -42,8 +42,8 @@ LABEL \
     org.opencontainers.image.authors="SDeSalve <me@sdesalve.it>" \
     org.opencontainers.image.licenses="CC Attribution-NonCommercial 4.0 International" \
     org.opencontainers.image.url="https://sdesalve.it" \
-    org.opencontainers.image.source="https://github.com/sdesalve/hassio-addons/dss_voip" \
-    org.opencontainers.image.documentation="https://github.com/sdesalve/hassio-addons/dss_voip/README.md" \
+    org.opencontainers.image.source="https://github.com/sdesalve/hassio-addons/tree/master/dss_voip" \
+    org.opencontainers.image.documentation="https://github.com/sdesalve/hassio-addons/tree/master/dss_voip/README.md" \
     org.opencontainers.image.created=${BUILD_DATE} \
     org.opencontainers.image.revision=${BUILD_REF} \
     org.opencontainers.image.version=${BUILD_VERSION}
