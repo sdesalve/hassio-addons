@@ -19,7 +19,6 @@ tts:
   - platform: google_translate
     service_name: google_translate_say
     language: 'it'
-	base_url: Please provide a valid base url for Google TTS
     ...
 ```
 
@@ -270,7 +269,7 @@ The original setup of this repository is by [SDeSalve][sdesalve].
 
 ## License
 
-Copyright (c) 2019-2021 SDeSalve
+Copyright (c) 2019 SDeSalve
 
 See [LICENSE][license]
 
