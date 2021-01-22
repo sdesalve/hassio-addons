@@ -1,5 +1,8 @@
 # Changelog
 
+## 3.5.3
+fix eol
+
 ## 3.5.1
 ⬆️ Upgrades add-on base image to v9.0.1
 ⬆️ Upgrades wget to 1.21.1-r1
