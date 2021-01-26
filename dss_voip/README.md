@@ -19,7 +19,7 @@ tts:
   - platform: google_translate
     service_name: google_translate_say
     language: 'it'
-	base_url: Please provide a valid base url for Google TTS
+    base_url: Please provide a valid base url for Google TTS
     ...
 ```
 
