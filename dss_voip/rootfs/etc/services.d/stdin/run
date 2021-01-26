@@ -382,5 +382,4 @@ while read -r msg; do
    bashio::log.green "[Info] Listening for messages via stdin service call..."
    
 done < /proc/1/fd/0
-
 chmod -R 770 /share/dss_voip
