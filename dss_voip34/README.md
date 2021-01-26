@@ -1,4 +1,4 @@
-# SDeSalve Hass.io Add-ons: DSS VoIP Notifier
+# SDeSalve Hass.io Add-ons: DSS VoIP Notifier34
 
 ![Supports aarch64 Architecture][aarch64-shield] ![Supports amd64 Architecture][amd64-shield] ![Supports armhf Architecture][armhf-shield] ![Supports armv7 Architecture][armv7-shield] ![Supports i386 Architecture][i386-shield]
 
@@ -28,17 +28,17 @@ The installation of this add-on is pretty straightforward and not different in
 comparison to installing any other Hass.io add-on.
 
 1. Add my Hass.io add-ons repository (**https://github.com/sdesalve/hassio-addons**) to your Hass.io instance.
-1. Install the "DSS VoIP Notifier" add-on.
+1. Install the "DSS VoIP Notifier34" add-on.
 1. Configure at least the `caller_id_uri`, `username`, and `password` options.
-1. Start the "DSS VoIP Notifier" add-on.
-1. Check the logs of the "DSS VoIP Notifier" add-on to see if everything
+1. Start the "DSS VoIP Notifier34" add-on.
+1. Check the logs of the "DSS VoIP Notifier34" add-on to see if everything
     went well. Addons will wait to be invoked from an `automation`/`script`.
 
 ## Configuration
 
 **Note**: _Remember to restart the add-on when the configuration is changed._
 
-DSS VoIP Notifier add-on configuration:
+DSS VoIP Notifier34 add-on configuration:
 
 ```yaml
 sip_parameters:

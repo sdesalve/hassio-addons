@@ -30,7 +30,7 @@ ARG BUILD_VERSION
 
 # Labels
 LABEL \
-    io.hass.name="DSS VoIP Notifier" \
+    io.hass.name="DSS VoIP Notifier34" \
     io.hass.description="VoIP Notifier for Home Assistant" \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
