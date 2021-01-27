@@ -13,5 +13,3 @@ As repository add `https://github.com/sdesalve/hassio-addons`
 [buymeacoffee]: https://www.buymeacoffee.com/sdesalve
 [paypal-shield]: https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif
 [paypal]: https://paypal.me/SDeSalve
-
-
