@@ -1,4 +1,7 @@
 # Changelog
+## 3.5.7
+⬆️ Upgrades add-on base image to v9.1.7
+
 
 ## 3.5.3
 fix eol
