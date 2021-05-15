@@ -10,7 +10,7 @@ RUN mkdir -p /tmp/monocle
 RUN mkdir -p /etc/monocle
 
 # Setup base system
-ARG BUILD_ARCH=armv7
+ARG BUILD_ARCH
 # hadolint ignore=SC2181
 
 # ---------------------------------------
