@@ -1,4 +1,4 @@
-ARG BUILD_FROM=hassioaddons/base:8.0.3
+ARG BUILD_FROM=hassioaddons/base:9.2.0
 # hadolint ignore=DL3006
 FROM ${BUILD_FROM}
 
@@ -10,7 +10,7 @@ RUN mkdir -p /tmp/monocle
 RUN mkdir -p /etc/monocle
 
 # Setup base system
-ARG BUILD_ARCH=amd64
+ARG BUILD_ARCH=armv7
 # hadolint ignore=SC2181
 
 # ---------------------------------------
