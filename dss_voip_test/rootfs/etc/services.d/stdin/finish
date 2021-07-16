@@ -1,0 +1,7 @@
+#!/usr/bin/execlineb -S0
+# ==============================================================================
+# SDeSalve HomeAssistant Addon: VoIP Notifier for HomeAssistant
+# Take down the S6 supervision tree when the addon fails
+# ==============================================================================
+
+s6-svscanctl -t /var/run/s6/services
