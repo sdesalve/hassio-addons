@@ -1,5 +1,5 @@
 {
-  "name": "DSS VoIP Notifier",
+  "name": "DSS VoIP Notifier - TEST VERSION  - DO NOT USE IN PRODUCTION",
   "version": "0.0.1",
   "slug": "dss_voip_test",
   "url": "https://github.com/sdesalve/hassio-addons/tree/master/dss_voip_test",
