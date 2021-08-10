@@ -173,11 +173,11 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
       MAX_CALL_TIME_VALUE=50
    fi
    
-   if [ "$MAX_CALL_TIME_VALUE" == "-1" ]; then
+#   if [ "$MAX_CALL_TIME_VALUE" == "-1" ]; then
 #     echo "--duration 120"                                 >> /share/dss_voip_test/dss_pjsua.conf
-   else 
+#   else 
      echo "--duration $MAX_CALL_TIME_VALUE"                >> /share/dss_voip_test/dss_pjsua.conf
-   fi
+#   fi
    echo ""                                                 >> /share/dss_voip_test/dss_pjsua.conf
    echo "sip_parameters = '$SIP_PARAMETERS_VALUE'"         >> /share/dss_voip_test/dss_pjsua.log
    
