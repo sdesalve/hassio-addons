@@ -1,4 +1,8 @@
 # Changelog
+## 3.5.9
+⬆️ Upgrades add-on base image to v10.0.1
+
+
 ## 3.5.7
 ⬆️ Upgrades add-on base image to v9.1.7
 
