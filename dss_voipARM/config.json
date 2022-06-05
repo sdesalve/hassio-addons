@@ -1,0 +1,37 @@
+{
+  "name": "DSS VoIP Notifier for ARM",
+  "version": "4.0.0",
+  "slug": "dss_voipARM",
+  "url": "https://github.com/sdesalve/hassio-addons/tree/master/dss_voipARM",
+  "description": "VoIP Notifier for Home Assistant (for ARM processors)",
+  "arch": ["aarch64", "armhf", "armv7"],
+  "startup": "application",
+  "stdin": true,
+  "hassio_api": true,
+  "hassio_role": "default",
+  "boot": "auto",
+  "map": ["share:rw"],
+  "homeassistant_api": true,
+  "options": {
+    "sip_parameters": {
+      "caller_id_uri": "sip:username@sipserver.com",
+      "realm": "*",
+      "username": "username",
+      "password": "password"
+    }
+  },
+  "schema": {
+    "sip_parameters": {
+      "sip_server_uri": "str?",
+      "caller_id_uri":  "str",
+      "realm": "str?",
+      "username": "str?",
+      "password": "str?"
+    },
+    "max_call_time": "str?",
+    "platform_tts": "str?",
+    "pjsua_custom_options": "str?",
+    "sox_custom_options_input_file": "str?",
+    "sox_custom_options_output_file": "str?"
+  }
+}

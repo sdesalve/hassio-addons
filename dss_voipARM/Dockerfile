@@ -1,0 +1,49 @@
+ARG BUILD_FROM=hassioaddons/base:11.1.0
+# hadolint ignore=DL3006
+FROM ${BUILD_FROM}
+
+# Environment variables
+ENV \
+    S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
+    S6_CMD_WAIT_FOR_SERVICES=1 \
+    TERM="xterm-256color"
+
+ENV LANG C.UTF-8
+
+# Copy root filesystem
+COPY rootfs /
+
+# Setup base
+RUN apk add --no-cache \
+    coreutils=9.0-r2 \
+    wget=1.21.2-r2 \
+    sox \
+    pjsua \
+    screen \
+    bc
+    
+# Build arguments
+ARG BUILD_ARCH
+ARG BUILD_DATE
+ARG BUILD_REF
+ARG BUILD_VERSION
+
+# Labels
+LABEL \
+    io.hass.name="DSS VoIP Notifier for ARM" \
+    io.hass.description="VoIP Notifier for Home Assistant (for ARM processors)" \
+    io.hass.arch="${BUILD_ARCH}" \
+    io.hass.type="addon" \
+    io.hass.version=${BUILD_VERSION} \
+    maintainer="SDeSalve <me@sdesalve.it>" \
+    org.opencontainers.image.title="Addon VoIP for ${BUILD_ARCH}" \
+    org.opencontainers.image.description="VoIP Notifier for Home Assistant (for ARM processors)" \
+    org.opencontainers.image.vendor="SDeSalve.it" \
+    org.opencontainers.image.authors="SDeSalve <me@sdesalve.it>" \
+    org.opencontainers.image.licenses="CC Attribution-NonCommercial 4.0 International" \
+    org.opencontainers.image.url="https://sdesalve.it" \
+    org.opencontainers.image.source="https://github.com/sdesalve/hassio-addons/tree/master/dss_voipARM" \
+    org.opencontainers.image.documentation="https://github.com/sdesalve/hassio-addons/tree/master/dss_voipARM/README.md" \
+    org.opencontainers.image.created=${BUILD_DATE} \
+    org.opencontainers.image.revision=${BUILD_REF} \
+    org.opencontainers.image.version=${BUILD_VERSION}
