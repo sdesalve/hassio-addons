@@ -1,7 +1,8 @@
 {
   "squash": false,
   "build_from": {
-    "amd64": "hassioaddons/base-amd64:8.0.3"
+    "amd64": "ghcr.io/hassio-addons/base:12.2.6",
+    "i386": "ghcr.io/hassio-addons/base:12.2.6"
   },
   "args": {}
 }
