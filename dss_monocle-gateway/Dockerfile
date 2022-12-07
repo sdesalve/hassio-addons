@@ -10,8 +10,17 @@ RUN mkdir -p /tmp/monocle
 RUN mkdir -p /etc/monocle
 
 # Setup base system
-ARG BUILD_ARCH=amd64
+#ARG BUILD_ARCH=amd64
 # hadolint ignore=SC2181
+
+# Build arguments
+ARG BUILD_ARCH
+ARG BUILD_DATE
+ARG BUILD_DESCRIPTION
+ARG BUILD_NAME
+ARG BUILD_REF
+ARG BUILD_REPOSITORY
+ARG BUILD_VERSION
 
 # ---------------------------------------
 # Install Monocle Gateway dependencies
