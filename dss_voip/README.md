@@ -196,6 +196,16 @@ sip_parameters:
   ```
 Where areacodeandnumber is in the format 035556789 (03 is the area code, the phone number is 5556789). This is the same login you would use in connecting your VoIP phone to 2talk.
 
+### sipgate.co.uk
+```yaml
+sip_parameters:
+  caller_id_uri: sip:12345678@sipgate.co.uk
+  realm: '*'
+  username: '12345678'
+  password: MYPASS
+  sip_parameters: sip:sipgate.co.uk
+pjsua_custom_options: '--no-tcp'
+```
 
 ## How to use
 
