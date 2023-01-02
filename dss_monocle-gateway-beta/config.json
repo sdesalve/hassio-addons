@@ -1,0 +1,21 @@
+{
+  "name": "DSS Monocle Gateway",
+  "version": "0.16.0",
+  "slug": "dss_monocle-gateway-beta",
+  "description": "Monocle Gateway Add-On for Home Assistant BETA",
+  "url": "https://github.com/sdesalve/hassio-addons/tree/master/dss_monocle-gateway-beta",
+  "startup": "services",
+  "hassio_api": true,
+  "arch": [
+    "amd64", "i386"", "aarch64", "armhf", "armv7"
+  ],
+  "boot": "auto",
+  "options": {
+    "monocle_token": "your_very_long_token"
+  },
+  "schema": {
+    "monocle_token": "str"
+  },
+  "host_network": "true",
+  "init": "false"
+}
