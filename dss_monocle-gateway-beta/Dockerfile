@@ -88,8 +88,8 @@ CMD ["/run.sh"]
 
 # Labels
 LABEL \
-    io.hass.name="DSS Monocle Gateway" \
-    io.hass.description="DSS Monocle Gateway Add-On" \
+    io.hass.name="DSS Monocle Gateway BETA" \
+    io.hass.description="DSS Monocle Gateway Add-On BETA" \
     io.hass.arch="armhf|aarch64|i386|amd64" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
@@ -100,8 +100,8 @@ LABEL \
     org.opencontainers.image.authors="SDeSalve <me@sdesalve.it>" \
     org.opencontainers.image.licenses="CC Attribution-NonCommercial 4.0 International" \
     org.opencontainers.image.url="https://sdesalve.it" \
-    org.opencontainers.image.source="https://github.com/sdesalve/hassio-addons/tree/master/dss_monocle-gateway" \
-    org.opencontainers.image.documentation="https://github.com/sdesalve/hassio-addons/tree/master/dss_monocle-gateway/README.md" \
+    org.opencontainers.image.source="https://github.com/sdesalve/hassio-addons/tree/master/dss_monocle-gateway-beta" \
+    org.opencontainers.image.documentation="https://github.com/sdesalve/hassio-addons/tree/master/dss_monocle-gateway-beta/README.md" \
     org.opencontainers.image.created=${BUILD_DATE} \
     org.opencontainers.image.revision=${BUILD_REF} \
     org.opencontainers.image.version=${BUILD_VERSION}    

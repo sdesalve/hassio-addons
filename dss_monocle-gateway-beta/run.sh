@@ -1,10 +1,10 @@
 #!/usr/bin/with-contenv bashio
 # ==============================================================================
-# SDeSalve HomeAssistant Addon: Monocle Gateway
+# SDeSalve HomeAssistant Addon: Monocle Gateway BETA
 # Monocle Gateway - www.monoclecam.com
 # ==============================================================================
 
-bashio::log.green "[Info] Starting addon..."
+bashio::log.green "[Info] Starting addon BETA..."
 
 # Generate monocle.token
 MONOCLE_TOKEN=$(bashio::config 'monocle_token | length')

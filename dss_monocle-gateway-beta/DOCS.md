@@ -1,5 +1,5 @@
 
-# SDeSalve Home Assistant Add-ons: DSS Monocle Gateway
+# SDeSalve Home Assistant Add-ons: DSS Monocle Gateway BETA
 
 ## Prerequisites
 
@@ -76,4 +76,4 @@ See [LICENSE][license]
 [repository]: https://github.com/sdesalve/hassio-addons
 [hassiohelp]: https://t.me/HassioHelp
 [gatracking]: https://ssl.google-analytics.com/collect?v=1&t=event&ec=github&ea=view&t=event&tid=UA-145414045-1&z=1565415715&cid=5940b69c-91c9-9ba5-290b-beb31c9d76fb&dt=DSS%20Monocle%20Gateway%20-%20README&dp=/DSS%20Monocle%20Gateway%20-%20README
-[license]: https://github.com/sdesalve/hassio-addons/blob/master/dss_monocle-gateway/LICENSE.md
+[license]: https://github.com/sdesalve/hassio-addons/blob/master/dss_monocle-gateway-beta/LICENSE.md
