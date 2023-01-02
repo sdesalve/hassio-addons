@@ -1,5 +1,5 @@
 
-# SDeSalve Home Assistant Add-ons: DSS Monocle Gateway BETA
+# SDeSalve Home Assistant Add-ons: DSS Monocle Gateway
 
 ![Supports amd64 Architecture][amd64-shield]
 ![Supports aarch64 Architecture][aarch64-shield] 

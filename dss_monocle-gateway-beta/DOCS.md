@@ -1,5 +1,5 @@
 
-# SDeSalve Home Assistant Add-ons: DSS Monocle Gateway BETA
+# SDeSalve Home Assistant Add-ons: DSS Monocle Gateway
 
 ## Prerequisites
 
