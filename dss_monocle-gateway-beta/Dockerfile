@@ -47,15 +47,15 @@ RUN apk add --no-cache ca-certificates
 # ---------------------------------------
 RUN \
     if [ "${BUILD_ARCH}" = "armhf" ]; then \
-    wget -c https://archive.monoclecam.com/monocle-gateway/monocle-gateway-0.0.6-beta/linux/monocle-gateway-alpine-arm64-v0.0.6.tar.gz -O /tmp/monocle/monocle-gateway.tar.gz \
+    wget -c https://archive.monoclecam.com/monocle-gateway/monocle-gateway-0.0.6-beta/linux/monocle-gateway-alpine-arm64-v0.0.6.tar.gz -O /tmp/monocle/monocle-gateway.tar.gz; \
     elif [ "${BUILD_ARCH}" = "armv7" ]; then \
-    wget -c https://archive.monoclecam.com/monocle-gateway/monocle-gateway-0.0.6-beta/linux/monocle-gateway-alpine-arm64-v0.0.6.tar.gz -O /tmp/monocle/monocle-gateway.tar.gz \
+    wget -c https://archive.monoclecam.com/monocle-gateway/monocle-gateway-0.0.6-beta/linux/monocle-gateway-alpine-arm64-v0.0.6.tar.gz -O /tmp/monocle/monocle-gateway.tar.gz; \
     elif [ "${BUILD_ARCH}" = "aarch64" ]; then \
-    wget -c https://archive.monoclecam.com/monocle-gateway/monocle-gateway-0.0.6-beta/linux/monocle-gateway-alpine-arm64-v0.0.6.tar.gz -O /tmp/monocle/monocle-gateway.tar.gz \
+    wget -c https://archive.monoclecam.com/monocle-gateway/monocle-gateway-0.0.6-beta/linux/monocle-gateway-alpine-arm64-v0.0.6.tar.gz -O /tmp/monocle/monocle-gateway.tar.gz; \
     elif [ "${BUILD_ARCH}" = "i386" ]; then \
-    wget -c https://archive.monoclecam.com/monocle-gateway/monocle-gateway-0.0.6-beta/linux/monocle-gateway-alpine-x64-v0.0.6.tar.gz -O /tmp/monocle/monocle-gateway.tar.gz \
+    wget -c https://archive.monoclecam.com/monocle-gateway/monocle-gateway-0.0.6-beta/linux/monocle-gateway-alpine-x64-v0.0.6.tar.gz -O /tmp/monocle/monocle-gateway.tar.gz; \
     elif [ "${BUILD_ARCH}" = "amd64" ]; then \
-    wget -c https://archive.monoclecam.com/monocle-gateway/monocle-gateway-0.0.6-beta/linux/monocle-gateway-alpine-x64-v0.0.6.tar.gz -O /tmp/monocle/monocle-gateway.tar.gz \
+    wget -c https://archive.monoclecam.com/monocle-gateway/monocle-gateway-0.0.6-beta/linux/monocle-gateway-alpine-x64-v0.0.6.tar.gz -O /tmp/monocle/monocle-gateway.tar.gz; \
     else \
     echo 'NOT VALID BUILD'; exit 1; \
     fi
