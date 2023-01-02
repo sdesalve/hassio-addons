@@ -24,10 +24,10 @@ All product names, logos, brands, trademarks and registered trademarks are prope
 Use of these names, logos, trademarks, and brands does not imply endorsement.
 
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[aarch64-shield]: https://img.shields.io/badge/aarch64-no-red.svg
-[armhf-shield]: https://img.shields.io/badge/armhf-no-red.svg
-[armv7-shield]: https://img.shields.io/badge/armv7-no-red.svg
-[i386-shield]: https://img.shields.io/badge/i386-no-red.svg
+[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
+[armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
+[armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
+[i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
 [buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg
 [buymeacoffee]: https://www.buymeacoffee.com/sdesalve
 [paypal-shield]: https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif
