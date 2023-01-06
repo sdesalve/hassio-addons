@@ -151,6 +151,7 @@ sip_parameters:
   realm: '*'
   username: 'AuthenticationID'
   password: 'AuthenticationPassword'
+pjsua_custom_options: '-–no-tcp'
 ```
 **Note**: Use the Authentication ID and Password from the Extension settings for username and password, but the SIP extension number for the caller ID URI
 
