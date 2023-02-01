@@ -7,7 +7,7 @@
 ![Supports armv7 Architecture][armv7-shield]
 ![Supports i386 Architecture][i386-shield]
 
-[![Buy me a coffee][buymeacoffee-shield]][buymeacoffee] [![Support my work on Paypal][paypal-shield]][paypal]
+[![Support my work on Paypal][paypal-shield]][paypal]
 
 This add-on allows you to run Monocle Gateway within Home Assistant
 
@@ -28,7 +28,5 @@ Use of these names, logos, trademarks, and brands does not imply endorsement.
 [armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg
-[buymeacoffee-shield]: https://www.buymeacoffee.com/assets/img/guidelines/download-assets-sm-2.svg
-[buymeacoffee]: https://www.buymeacoffee.com/sdesalve
-[paypal-shield]: https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif
+[paypal-shield]: https://www.franklin.lib.mi.us/site-assets/images/paypal-donate-button-transparent.png/@@images/image.png
 [paypal]: https://paypal.me/SDeSalve
