@@ -208,6 +208,18 @@ sip_parameters:
 pjsua_custom_options: '--no-tcp'
 ```
 
+### VoIP NETelip
+```yaml
+sip_parameters:
+  caller_id_uri: sip:USSERVOIP@sip.netelip.com:9060
+  realm: '*'
+  username: 'USSERVOIP'
+  password: 'PASSWORD'
+  sip_server_uri: sip.netelip.com:9060
+pjsua_custom_options: "-–no-tcp --outbound=sip:sip.netelip.com:9060;lr"
+```
+Thanks to Javier Domingo
+
 ## How to use
 
 You will need to call this addon from your Hass.io `automation`/`script` usign following yaml service invoke:
