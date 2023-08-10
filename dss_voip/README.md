@@ -216,7 +216,7 @@ sip_parameters:
   username: 'USSERVOIP'
   password: 'PASSWORD'
   sip_server_uri: sip.netelip.com:9060
-pjsua_custom_options: "-–no-tcp --outbound=sip:sip.netelip.com:9060;lr"
+pjsua_custom_options: '-–no-tcp --outbound=sip:sip.netelip.com:9060;lr'
 ```
 Thanks to Javier Domingo
 
