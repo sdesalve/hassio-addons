@@ -205,7 +205,7 @@ You will need to call this addon from your Hass.io `automation`/`script` usign f
    ...
     - service: hassio.addon_stdin
       data_template:
-        addon: 89275b70_dss_voipARM
+        addon: 89275b70_dss_voiparm
         input: {"call_sip_uri":"sip:+393334455667@sipserver.com","message_tts":"Write here your message"}
    ...
 ```
@@ -285,7 +285,7 @@ See [LICENSE][license]
 [hassiohelp]: https://t.me/HassioHelp
 [googletts]: https://www.home-assistant.io/components/google_translate
 [gatracking]: https://ssl.google-analytics.com/collect?v=1&t=event&ec=github&ea=view&t=event&tid=UA-145414045-1&z=1565415715&cid=5940b69c-91c9-9ba5-290b-beb31c9d76fb&dt=DSS%20VoIP%20Notifier%20-%20README&dp=/DSS%20VoIP%20Notifier%20-%20README
-[license]: https://github.com/sdesalve/hassio-addons/blob/master/dss_voipARM/LICENSE.md
+[license]: https://github.com/sdesalve/hassio-addons/blob/master/dss_voiparm/LICENSE.md
 [pjsuaman]: https://www.pjsip.org/pjsua.htm#cmdline
 [soxman]: http://sox.sourceforge.net/sox.html
 [pbxesurl]: https://www.pbxes.com

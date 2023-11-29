@@ -6,9 +6,9 @@
 
 set -e
 
-mkdir -p /share/dss_voipARM
-rm -f /share/dss_voipARM/dss_*
-chmod -R 770 /share/dss_voipARM
+mkdir -p /share/dss_voiparm
+rm -f /share/dss_voiparm/dss_*
+chmod -R 770 /share/dss_voiparm
 
 CONFIG_PATH=/data/options.json
 bashio::log.green "[Info] Starting addon..."
@@ -18,9 +18,9 @@ SIP_PARAMETERS=$(bashio::config 'sip_parameters | length')
 
 if [ "$SIP_PARAMETERS" -gt "0" ]; then
    SIP_PARAMETERS_VALUE=$(bashio::config 'sip_parameters')
-   echo "--null-audio"                                      > /share/dss_voipARM/dss_pjsua.conf
-   echo "--auto-play"                                      >> /share/dss_voipARM/dss_pjsua.conf
-   echo "--play-file /share/dss_voipARM/dss_message_tts.wav"  >> /share/dss_voipARM/dss_pjsua.conf
+   echo "--null-audio"                                      > /share/dss_voiparm/dss_pjsua.conf
+   echo "--auto-play"                                      >> /share/dss_voiparm/dss_pjsua.conf
+   echo "--play-file /share/dss_voiparm/dss_message_tts.wav"  >> /share/dss_voiparm/dss_pjsua.conf
 
    SIP_SERVER_URI=$(bashio::config 'sip_parameters.sip_server_uri | length')
    CALLER_ID_URI=$(bashio::config 'sip_parameters.caller_id_uri | length')
@@ -30,34 +30,34 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
       
    if [ "$CALLER_ID_URI" -gt "0" ]; then 
       CALLER_ID_URI_VALUE=$(bashio::config 'sip_parameters.caller_id_uri')
-      echo "--id $CALLER_ID_URI_VALUE"                     >> /share/dss_voipARM/dss_pjsua.conf
+      echo "--id $CALLER_ID_URI_VALUE"                     >> /share/dss_voiparm/dss_pjsua.conf
    fi
    if [ "$REALM" -gt "0" ]; then 
       REALM_VALUE=$(bashio::config 'sip_parameters.realm')
    else
       REALM_VALUE="*"
    fi
-   echo "--realm $REALM_VALUE"                             >> /share/dss_voipARM/dss_pjsua.conf
+   echo "--realm $REALM_VALUE"                             >> /share/dss_voiparm/dss_pjsua.conf
    
    if [ "$USERNAME" -gt "0" ]; then 
       USERNAME_VALUE=$(bashio::config 'sip_parameters.username')
-      echo "--username $USERNAME_VALUE"                    >> /share/dss_voipARM/dss_pjsua.conf
+      echo "--username $USERNAME_VALUE"                    >> /share/dss_voiparm/dss_pjsua.conf
    fi
    if [ "$PASSWORD" -gt "0" ]; then 
       PASSWORD_VALUE=$(bashio::config 'sip_parameters.password')
-      echo "--password $PASSWORD_VALUE"                    >> /share/dss_voipARM/dss_pjsua.conf
+      echo "--password $PASSWORD_VALUE"                    >> /share/dss_voiparm/dss_pjsua.conf
    fi
    
    if [ "$CALLER_ID_URI_VALUE" = "sip:username@sipserver.com" ] && [ "$USERNAME_VALUE" = "username" ] && [ "$PASSWORD_VALUE" = "password" ]; then 
       bashio::log.red '[Error] Invalid config. Customize it!'
-      echo "[Error] Invalid config. Customize it!"         >> /share/dss_voipARM/dss_pjsua.log
+      echo "[Error] Invalid config. Customize it!"         >> /share/dss_voiparm/dss_pjsua.log
       exit 1
    fi
    
    PJSUA_CUSTOM_OPTIONS=$(bashio::config 'pjsua_custom_options | length')
    if [ "$PJSUA_CUSTOM_OPTIONS" -gt "0" ]; then 
       PJSUA_CUSTOM_OPTIONS_VALUE=$(bashio::config 'pjsua_custom_options')
-      echo "$PJSUA_CUSTOM_OPTIONS_VALUE"                   >> /share/dss_voipARM/dss_pjsua.conf
+      echo "$PJSUA_CUSTOM_OPTIONS_VALUE"                   >> /share/dss_voiparm/dss_pjsua.conf
       bashio::log.yellow "PJSUA_CUSTOM_OPTIONS = '$PJSUA_CUSTOM_OPTIONS_VALUE'"
    fi
 
@@ -65,46 +65,46 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
       bashio::log.green "[Info] Registering as SIP Client..."
       
       SIP_SERVER_URI_VALUE=$(bashio::config 'sip_parameters.sip_server_uri')
-      echo "--registrar $SIP_SERVER_URI_VALUE"              > /share/dss_voipARM/dss_autoanswer.conf
+      echo "--registrar $SIP_SERVER_URI_VALUE"              > /share/dss_voiparm/dss_autoanswer.conf
       
       if [ "$CALLER_ID_URI" -gt "0" ]; then 
          CALLER_ID_URI_VALUE=$(bashio::config 'sip_parameters.caller_id_uri')
-         echo "--id $CALLER_ID_URI_VALUE"                  >> /share/dss_voipARM/dss_autoanswer.conf
+         echo "--id $CALLER_ID_URI_VALUE"                  >> /share/dss_voiparm/dss_autoanswer.conf
       fi
       if [ "$REALM" -gt "0" ]; then 
          REALM_VALUE=$(bashio::config 'sip_parameters.realm')
       else
          REALM_VALUE="*"
       fi
-      echo "--realm $REALM_VALUE"                          >> /share/dss_voipARM/dss_autoanswer.conf
+      echo "--realm $REALM_VALUE"                          >> /share/dss_voiparm/dss_autoanswer.conf
       
       if [ "$USERNAME" -gt "0" ]; then 
          USERNAME_VALUE=$(bashio::config 'sip_parameters.username')
-         echo "--username $USERNAME_VALUE"                 >> /share/dss_voipARM/dss_autoanswer.conf
+         echo "--username $USERNAME_VALUE"                 >> /share/dss_voiparm/dss_autoanswer.conf
       fi
       if [ "$PASSWORD" -gt "0" ]; then 
          PASSWORD_VALUE=$(bashio::config 'sip_parameters.password')
-         echo "--password $PASSWORD_VALUE"                 >> /share/dss_voipARM/dss_autoanswer.conf
+         echo "--password $PASSWORD_VALUE"                 >> /share/dss_voiparm/dss_autoanswer.conf
       fi
       
       PJSUA_CUSTOM_OPTIONS=$(bashio::config 'pjsua_custom_options | length')
       if [ "$PJSUA_CUSTOM_OPTIONS" -gt "0" ]; then 
          PJSUA_CUSTOM_OPTIONS_VALUE=$(bashio::config 'pjsua_custom_options')
-         echo "$PJSUA_CUSTOM_OPTIONS_VALUE"                >> /share/dss_voipARM/dss_autoanswer.conf
+         echo "$PJSUA_CUSTOM_OPTIONS_VALUE"                >> /share/dss_voiparm/dss_autoanswer.conf
          bashio::log.yellow "PJSUA_CUSTOM_OPTIONS = '$PJSUA_CUSTOM_OPTIONS_VALUE'"
       fi
 
-      echo "--local-port 0"                                >> /share/dss_voipARM/dss_autoanswer.conf
-      echo "--null-audio"                                  >> /share/dss_voipARM/dss_autoanswer.conf
-      echo "--auto-play"                                   >> /share/dss_voipARM/dss_autoanswer.conf
-      echo "--play-file /etc/dss_autoanswer.wav"           >> /share/dss_voipARM/dss_autoanswer.conf
-      echo "--duration 30"                                 >> /share/dss_voipARM/dss_autoanswer.conf
-      echo "--auto-answer 200"                             >> /share/dss_voipARM/dss_autoanswer.conf
+      echo "--local-port 0"                                >> /share/dss_voiparm/dss_autoanswer.conf
+      echo "--null-audio"                                  >> /share/dss_voiparm/dss_autoanswer.conf
+      echo "--auto-play"                                   >> /share/dss_voiparm/dss_autoanswer.conf
+      echo "--play-file /etc/dss_autoanswer.wav"           >> /share/dss_voiparm/dss_autoanswer.conf
+      echo "--duration 30"                                 >> /share/dss_voiparm/dss_autoanswer.conf
+      echo "--auto-answer 200"                             >> /share/dss_voiparm/dss_autoanswer.conf
       
-      echo "--auto-loop"                                   >> /share/dss_voipARM/dss_autoanswer.conf
-      echo "--max-calls 5"                                 >> /share/dss_voipARM/dss_autoanswer.conf
+      echo "--auto-loop"                                   >> /share/dss_voiparm/dss_autoanswer.conf
+      echo "--max-calls 5"                                 >> /share/dss_voiparm/dss_autoanswer.conf
 
-      screen -dmS pjsua pjsua --app-log-level=5 --log-level=5 --log-file '/share/dss_voipARM/dss_autoanswer.log' --config-file '/share/dss_voipARM/dss_autoanswer.conf'
+      screen -dmS pjsua pjsua --app-log-level=5 --log-level=5 --log-file '/share/dss_voiparm/dss_autoanswer.log' --config-file '/share/dss_voiparm/dss_autoanswer.conf'
       if [ $? -eq 0 ]; then
          bashio::log.magenta \
            '-----------------------------------------------------------'
@@ -112,7 +112,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
          bashio::log.magenta
          bashio::log.magenta " Call <$CALLER_ID_URI_VALUE>/VoIP phone number"
          bashio::log.magenta " to check system status."
-         bashio::log.magenta " You'll find logs in /share/dss_voipARM/dss_autoanswer.log"
+         bashio::log.magenta " You'll find logs in /share/dss_voiparm/dss_autoanswer.log"
          bashio::log.magenta \
            '-----------------------------------------------------------'
       else
@@ -130,7 +130,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
    if [ "$PLATFORM_TTS" -gt "0" ]; then
       PLATFORM_TTS_VALUE=$(bashio::config 'platform_tts')
       bashio::log.yellow "PLATFORM_TTS = '$PLATFORM_TTS_VALUE'"
-      echo "PLATFORM_TTS = '$PLATFORM_TTS_VALUE'"          >> /share/dss_voipARM/dss_pjsua.log
+      echo "PLATFORM_TTS = '$PLATFORM_TTS_VALUE'"          >> /share/dss_voiparm/dss_pjsua.log
    else 
       PLATFORM_TTS_VALUE="google_translate"
    fi
@@ -139,7 +139,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
    if [ "$SOX_CUSTOM_OPTIONS_INPUT_FILE" -gt "0" ]; then 
       SOX_CUSTOM_OPTIONS_INPUT_FILE_VALUE=$(bashio::config 'sox_custom_options_input_file ')
       echo "SOX_CUSTOM_OPTIONS_INPUT_FILE = \
-             '$SOX_CUSTOM_OPTIONS_INPUT_FILE_VALUE'"       >> /share/dss_voipARM/dss_pjsua.log
+             '$SOX_CUSTOM_OPTIONS_INPUT_FILE_VALUE'"       >> /share/dss_voiparm/dss_pjsua.log
       bashio::log.yellow "SOX_CUSTOM_OPTIONS_INPUT_FILE = '$SOX_CUSTOM_OPTIONS_INPUT_FILE_VALUE'"
    else
       SOX_CUSTOM_OPTIONS_INPUT_FILE_VALUE=""
@@ -149,7 +149,7 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
    if [ "$SOX_CUSTOM_OPTIONS_OUTPUT_FILE" -gt "0" ]; then 
       SOX_CUSTOM_OPTIONS_OUTPUT_FILE_VALUE=$(bashio::config 'sox_custom_options_output_file ')
       echo "SOX_CUSTOM_OPTIONS_OUTPUT_FILE = \
-             '$SOX_CUSTOM_OPTIONS_OUTPUT_FILE_VALUE'"      >> /share/dss_voipARM/dss_pjsua.log
+             '$SOX_CUSTOM_OPTIONS_OUTPUT_FILE_VALUE'"      >> /share/dss_voiparm/dss_pjsua.log
       bashio::log.yellow "SOX_CUSTOM_OPTIONS_OUTPUT_FILE = '$SOX_CUSTOM_OPTIONS_OUTPUT_FILE_VALUE'"
    else
       SOX_CUSTOM_OPTIONS_OUTPUT_FILE_VALUE=""
@@ -167,19 +167,19 @@ if [ "$SIP_PARAMETERS" -gt "0" ]; then
         MAX_CALL_TIME_VALUE=10
       fi
       echo "MAX_CALL_TIME = \
-             '$MAX_CALL_TIME'"                             >> /share/dss_voipARM/dss_pjsua.log
+             '$MAX_CALL_TIME'"                             >> /share/dss_voiparm/dss_pjsua.log
       bashio::log.yellow "MAX_CALL_TIME = '$MAX_CALL_TIME_VALUE'"
    else
       MAX_CALL_TIME_VALUE=50
    fi
    
    if [ "$MAX_CALL_TIME_VALUE" == "-1" ]; then
-     echo "--duration 120"                                 >> /share/dss_voipARM/dss_pjsua.conf
+     echo "--duration 120"                                 >> /share/dss_voiparm/dss_pjsua.conf
    else 
-     echo "--duration $MAX_CALL_TIME_VALUE"                >> /share/dss_voipARM/dss_pjsua.conf
+     echo "--duration $MAX_CALL_TIME_VALUE"                >> /share/dss_voiparm/dss_pjsua.conf
    fi
-   echo ""                                                 >> /share/dss_voipARM/dss_pjsua.conf
-   echo "sip_parameters = '$SIP_PARAMETERS_VALUE'"         >> /share/dss_voipARM/dss_pjsua.log
+   echo ""                                                 >> /share/dss_voiparm/dss_pjsua.conf
+   echo "sip_parameters = '$SIP_PARAMETERS_VALUE'"         >> /share/dss_voiparm/dss_pjsua.log
    
 else
    bashio::log.red \
@@ -189,25 +189,25 @@ else
    bashio::log.red ' sip_parameters not specified.'
    bashio::log.red \
      '-----------------------------------------------------------'
-   echo "sip_parameters not specified"                     >> /share/dss_voipARM/dss_pjsua.log
+   echo "sip_parameters not specified"                     >> /share/dss_voiparm/dss_pjsua.log
    exit 1
 fi
 
-echo ""                                                    >> /share/dss_voipARM/dss_voipARM.conf
+echo ""                                                    >> /share/dss_voiparm/dss_voiparm.conf
 
 # change perms on config files
-chmod 660 /share/dss_voipARM/dss_*
+chmod 660 /share/dss_voiparm/dss_*
 
 # listen for input
 bashio::log.green "[Info] Listening for messages via stdin service call..."
 
 # shellcheck disable=SC2162
 while read -r msg; do
-   rm -f /share/dss_voipARM/dss_message_tts.*
+   rm -f /share/dss_voiparm/dss_message_tts.*
    MAKECALL="1"
    # parse JSON
    bashio::log.green "[Info] Received messages ${msg}"
-   echo "[Info] Received messages '${msg}'"                >> /share/dss_voipARM/dss_pjsua.log
+   echo "[Info] Received messages '${msg}'"                >> /share/dss_voiparm/dss_pjsua.log
    
    CALL_DURATION="$(echo "$msg" | jq --raw-output '.call_duration | length')"
    CALL_DURATION_VALUE=0
@@ -220,7 +220,7 @@ while read -r msg; do
    if [ "$CALL_SIP_URI" -gt "0" ]; then
       CALL_SIP_URI_VALUE="$(echo "$msg" | jq --raw-output '.call_sip_uri')"
       # bashio::log.info '[Debug] CALL_SIP_URI_VALUE = '$CALL_SIP_URI_VALUE 
-      echo "CALL_SIP_URI_VALUE = '$CALL_SIP_URI_VALUE'"    >> /share/dss_voipARM/dss_pjsua.log
+      echo "CALL_SIP_URI_VALUE = '$CALL_SIP_URI_VALUE'"    >> /share/dss_voiparm/dss_pjsua.log
    else
       MAKECALL="0"
       bashio::log.red \
@@ -230,14 +230,14 @@ while read -r msg; do
       bashio::log.red ' call_sip_uri not specified.'
       bashio::log.red \
         '-----------------------------------------------------------'
-      echo "call_sip_uri not specified"                    >> /share/dss_voipARM/dss_pjsua.log
+      echo "call_sip_uri not specified"                    >> /share/dss_voiparm/dss_pjsua.log
    fi
 
    MESSAGE_TTS="$(echo "$msg" | jq --raw-output '.message_tts | length')"
    if [ "$MESSAGE_TTS" -gt "0" ]; then
       MESSAGE_TTS_VALUE="$(echo "$msg" | jq --raw-output '.message_tts')"
       # bashio::log.green '[Debug] MESSAGE_TTS_VALUE = '$MESSAGE_TTS_VALUE 
-      echo "MESSAGE_TTS_VALUE = '$MESSAGE_TTS_VALUE'"      >> /share/dss_voipARM/dss_pjsua.log
+      echo "MESSAGE_TTS_VALUE = '$MESSAGE_TTS_VALUE'"      >> /share/dss_voiparm/dss_pjsua.log
       
       DATA_JSON=$( jq --arg key0   'message' \
          --arg value0 ''"$MESSAGE_TTS_VALUE"'' \
@@ -246,11 +246,11 @@ while read -r msg; do
          '. | .[$key0]=$value0 | .[$key1]=$value1' \
          <<<'{}')
       #bashio::log.info 'DATA_JSON = '$DATA_JSON 
-      echo "DATA_JSON = '$DATA_JSON'"                      >> /share/dss_voipARM/dss_pjsua.log
+      echo "DATA_JSON = '$DATA_JSON'"                      >> /share/dss_voiparm/dss_pjsua.log
 
       # bashio::log.green 'HASSIO_TOKEN = '$HASSIO_TOKEN 
       JSONGOOGLETTS=$( curl --silent -X POST -H "x-ha-access: ${HASSIO_TOKEN}" -H "Content-Type: application/json" -d "${DATA_JSON}" http://hassio/homeassistant/api/tts_get_url)
-      echo "JSONGOOGLETTS = '$JSONGOOGLETTS'"              >> /share/dss_voipARM/dss_pjsua.log
+      echo "JSONGOOGLETTS = '$JSONGOOGLETTS'"              >> /share/dss_voiparm/dss_pjsua.log
 
       if [ "$JSONGOOGLETTS" == "404: Not Found" ]; then
          MAKECALL="0"
@@ -261,13 +261,13 @@ while read -r msg; do
          bashio::log.red ' Is Google TTS Services available?'
          bashio::log.red \
            '-----------------------------------------------------------'
-         echo "Is Google TTS Services available?"          >> /share/dss_voipARM/dss_pjsua.log
+         echo "Is Google TTS Services available?"          >> /share/dss_voiparm/dss_pjsua.log
          exit 1
       else
          URLFILEMP3=$(echo "$JSONGOOGLETTS" | jq --raw-output ".url | length" )
          if [ "$URLFILEMP3" -gt "0" ]; then
             URLFILEMP3_VALUE=$(echo "$JSONGOOGLETTS" | jq --raw-output ".url" )
-            echo "URLFILEMP3_VALUE = '$URLFILEMP3_VALUE'"  >> /share/dss_voipARM/dss_pjsua.log
+            echo "URLFILEMP3_VALUE = '$URLFILEMP3_VALUE'"  >> /share/dss_voiparm/dss_pjsua.log
 
          else
             MAKECALL="0"
@@ -278,7 +278,7 @@ while read -r msg; do
             bashio::log.red ' Cannot get TTS URL file. '
             bashio::log.red \
               '-----------------------------------------------------------'
-            echo "Cannot get TTS URL file."                >> /share/dss_voipARM/dss_pjsua.log
+            echo "Cannot get TTS URL file."                >> /share/dss_voiparm/dss_pjsua.log
          fi
       
       fi
@@ -289,7 +289,7 @@ while read -r msg; do
       if [ "$AUDIO_FILE_URL" -gt "0" ]; then
          AUDIO_FILE_URL_VALUE="$(echo "$msg" | jq --raw-output '.audio_file_url')"
          # bashio::log.green '[Debug] AUDIO_FILE_URL = '$AUDIO_FILE_URL 
-         echo "AUDIO_FILE_URL = '$AUDIO_FILE_URL'"         >> /share/dss_voipARM/dss_pjsua.log
+         echo "AUDIO_FILE_URL = '$AUDIO_FILE_URL'"         >> /share/dss_voiparm/dss_pjsua.log
          
          URLFILEMP3=$AUDIO_FILE_URL
          URLFILEMP3_VALUE=$AUDIO_FILE_URL_VALUE
@@ -303,16 +303,16 @@ while read -r msg; do
          bashio::log.red \
            '-----------------------------------------------------------'
          echo "nor message_tts or \
-                audio_file_url was specified"              >> /share/dss_voipARM/dss_pjsua.log
+                audio_file_url was specified"              >> /share/dss_voiparm/dss_pjsua.log
       fi
    fi
    
    if [ "$MAKECALL" -eq "1" ]; then
-      # cat /share/dss_voipARM/dss_pjsua.conf
+      # cat /share/dss_voiparm/dss_pjsua.conf
       if [ "$URLFILEMP3" -gt "0" ]; then
          # bashio::log.green '[Debug] URLFILEMP3_VALUE = '$URLFILEMP3_VALUE 
          bashio::log.green "Converting audio file '$URLFILEMP3_VALUE'..."
-         sox -V3 $SOX_CUSTOM_OPTIONS_INPUT_FILE_VALUE $URLFILEMP3_VALUE $SOX_CUSTOM_OPTIONS_OUTPUT_FILE_VALUE /share/dss_voipARM/dss_message_tts.wav pad 0.5 1.5 2> /share/dss_voipARM/dss_sox.log
+         sox -V3 $SOX_CUSTOM_OPTIONS_INPUT_FILE_VALUE $URLFILEMP3_VALUE $SOX_CUSTOM_OPTIONS_OUTPUT_FILE_VALUE /share/dss_voiparm/dss_message_tts.wav pad 0.5 1.5 2> /share/dss_voiparm/dss_sox.log
          if [ $? -eq 0 ]; then
             bashio::log.green "Audio succesfully converted..."
             bashio::log.green "Starting SIP Client and calling '$CALL_SIP_URI_VALUE'..."
@@ -324,7 +324,7 @@ while read -r msg; do
             fi 
 
             if [ "$MAX_CALL_TIME_VALUE" == "-1" ]; then 
-               MAX_CALL_TIME_VALUE=$(soxi -d /share/dss_voipARM/dss_message_tts.wav | awk -F: '{ print ($1 * 3600) + ($2 * 60) + $3 }')
+               MAX_CALL_TIME_VALUE=$(soxi -d /share/dss_voiparm/dss_message_tts.wav | awk -F: '{ print ($1 * 3600) + ($2 * 60) + $3 }')
                if [ $(echo "$MAX_CALL_TIME_VALUE < 1" | bc) -eq 1 ]; then
                  # Sanity check, might need to increase this value, but we don't want pager/intercom calls stacking up 
                  # in the PBX's queue.
@@ -334,7 +334,7 @@ while read -r msg; do
 
             bashio::log.green "This call will be terminated after '$MAX_CALL_TIME_VALUE' seconds."
 
-            ( sleep $MAX_CALL_TIME_VALUE; echo h; sleep 0.5; echo q ) | ( pjsua --app-log-level=3 --config-file '/share/dss_voipARM/dss_pjsua.conf' $CALL_SIP_URI_VALUE 2> /share/dss_voipARM/dss_pjsua.log) || bashio::log.red "[Error] pjsua Exit code: "$?
+            ( sleep $MAX_CALL_TIME_VALUE; echo h; sleep 0.5; echo q ) | ( pjsua --app-log-level=3 --config-file '/share/dss_voiparm/dss_pjsua.conf' $CALL_SIP_URI_VALUE 2> /share/dss_voiparm/dss_pjsua.log) || bashio::log.red "[Error] pjsua Exit code: "$?
             
             if [ $? -eq 0 ]; then
                bashio::log.green "[Info] Call ended..."
@@ -347,7 +347,7 @@ while read -r msg; do
                bashio::log.red \
                  '-----------------------------------------------------------'
             fi
-            # rm -f '/share/dss_voipARM/current_call_data.log'
+            # rm -f '/share/dss_voiparm/current_call_data.log'
          else
             bashio::log.red \
               '-----------------------------------------------------------'
@@ -382,4 +382,4 @@ while read -r msg; do
    bashio::log.green "[Info] Listening for messages via stdin service call..."
    
 done < /proc/1/fd/0
-chmod -R 770 /share/dss_voipARM
+chmod -R 770 /share/dss_voiparm

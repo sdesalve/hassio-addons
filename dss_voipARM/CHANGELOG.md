@@ -1,5 +1,8 @@
 # Changelog
 
+## 4.1.0
+⬆️ Changed slug to dss_voiparm
+
 ## 4.0.0
 ⬆️ Changed name to "DSS VoIP Notifier for ARM"
 ⬆️ Upgraded base addon
