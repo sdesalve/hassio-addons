@@ -31,7 +31,7 @@ RUN apk add --no-cache curl
 RUN apk add --no-cache libstdc++
 RUN apk add --no-cache nano
 RUN apk add --no-cache net-tools
-RUN apk add --no-cache openssl
+RUN apk add --no-cache openssl=3.1.5-r0
 RUN apk add --no-cache ca-certificates
 
 # ---------------------------------------
