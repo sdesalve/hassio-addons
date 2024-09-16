@@ -1,6 +1,6 @@
 {
   "name": "DSS Monocle Gateway BETA",
-  "version": "0.16.0",
+  "version": "0.16.1",
   "slug": "dss_monocle-gateway-beta",
   "description": "Monocle Gateway Add-On for Home Assistant BETA",
   "url": "https://github.com/sdesalve/hassio-addons/tree/master/dss_monocle-gateway-beta",
